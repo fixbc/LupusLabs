@@ -13,7 +13,7 @@ import android.widget.TextView;
 public class NewTestActivity extends AppCompatActivity implements SensorEventListener {
 
     private SensorManager sensorManager;
-    private Sensor mTemperature;
+    private Sensor linearAccelerationSensor;
     TextView sensorTextView;
 
     @Override
@@ -22,7 +22,7 @@ public class NewTestActivity extends AppCompatActivity implements SensorEventLis
         setContentView(R.layout.activity_new_test);
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        mTemperature = sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
+        linearAccelerationSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
 
         sensorTextView = (TextView) findViewById(R.id.sensorTextView);
     }
@@ -30,7 +30,7 @@ public class NewTestActivity extends AppCompatActivity implements SensorEventLis
     @Override
     protected void onResume() {
         super.onResume();
-        sensorManager.registerListener(this, mTemperature, SensorManager.SENSOR_DELAY_NORMAL);
+        sensorManager.registerListener(this, linearAccelerationSensor, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     @Override
@@ -41,8 +41,8 @@ public class NewTestActivity extends AppCompatActivity implements SensorEventLis
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        float ambient_temperature = event.values[0];
-        sensorTextView.setText(Float.toString(ambient_temperature));
+        float acceleration = event.values[0];
+        sensorTextView.setText(Float.toString(acceleration));
     }
 
     @Override
