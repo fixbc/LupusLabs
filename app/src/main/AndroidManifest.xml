@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".AboutUsActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".ForgotPasswordActivity"
             android:parentActivityName=".MainActivity" />
         <activity

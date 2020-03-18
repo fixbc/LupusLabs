@@ -32,7 +32,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="356dp"
-        android:layout_height="131dp"
+        android:layout_height="100dp"
         android:background="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,8 +44,8 @@
 
     <Button
         android:id="@+id/loginButton"
-        android:layout_width="128dp"
-        android:layout_height="58dp"
+        android:layout_width="114dp"
+        android:layout_height="41dp"
         android:background="#95CCF0"
         android:onClick="openMainMenuActivity"
         android:text="Login"
@@ -59,10 +59,10 @@
 
     <Button
         android:id="@+id/aboutButton"
-        android:layout_width="128dp"
-        android:layout_height="55dp"
+        android:layout_width="114dp"
+        android:layout_height="41dp"
         android:background="#95CCF0"
-        android:onClick="openMainMenuActivity"
+        android:onClick="openAboutUsActivity"
         android:text="About Us"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -83,7 +83,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.443" />
+        app:layout_constraintVertical_bias="0.422" />
 
     <EditText
         android:id="@+id/passwordEditText"

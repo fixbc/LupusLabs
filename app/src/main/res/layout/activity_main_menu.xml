@@ -9,8 +9,8 @@
 
     <Button
         android:id="@+id/loginButton"
-        android:layout_width="123dp"
-        android:layout_height="56dp"
+        android:layout_width="114dp"
+        android:layout_height="41dp"
         android:background="#95CCF0"
         android:onClick="launchWebsite"
         android:text="lupus.org"
@@ -24,8 +24,8 @@
 
     <Button
         android:id="@+id/instructionsButton"
-        android:layout_width="333dp"
-        android:layout_height="78dp"
+        android:layout_width="250dp"
+        android:layout_height="41dp"
         android:background="#95CCF0"
         android:onClick="openInstructionsActivity"
         android:text="Instructions"
@@ -34,12 +34,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.523" />
+        app:layout_constraintVertical_bias="0.572" />
 
     <Button
         android:id="@+id/send_email_button"
-        android:layout_width="128dp"
-        android:layout_height="57dp"
+        android:layout_width="114dp"
+        android:layout_height="41dp"
         android:background="#95CCF0"
         android:onClick="openRedcapActivity"
         android:text="Redcap"
@@ -53,12 +53,12 @@
 
     <Button
         android:id="@+id/newTestButton"
-        android:layout_width="161dp"
-        android:layout_height="69dp"
+        android:layout_width="114dp"
+        android:layout_height="41dp"
         android:background="#95CCF0"
         android:onClick="openNewTestActivity"
         android:text="New Test"
-        android:textSize="22sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.128"
@@ -68,12 +68,12 @@
 
     <Button
         android:id="@+id/oldTestButton"
-        android:layout_width="166dp"
-        android:layout_height="68dp"
+        android:layout_width="114dp"
+        android:layout_height="41dp"
         android:background="#95CCF0"
         android:onClick="openOldTestsActivity"
         android:text="Old Tests"
-        android:textSize="22sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.893"
@@ -83,12 +83,12 @@
 
     <Button
         android:id="@+id/logoutButton"
-        android:layout_width="155dp"
-        android:layout_height="72dp"
+        android:layout_width="114dp"
+        android:layout_height="41dp"
         android:background="#95CCF0"
         android:onClick="openMainActivity"
         android:text="Logout"
-        android:textSize="22sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -108,5 +108,5 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.181" />
+        app:layout_constraintVertical_bias="0.129" />
 </androidx.constraintlayout.widget.ConstraintLayout>
