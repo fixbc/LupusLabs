@@ -42,7 +42,7 @@ public class NewTestActivity extends AppCompatActivity implements SensorEventLis
     @Override
     public void onSensorChanged(SensorEvent event) {
         float acceleration = event.values[0];
-        sensorTextView.setText(Float.toString(acceleration));
+        sensorTextView.setText(Float.toString(acceleration) + " m/s\u00B2");
     }
 
     @Override
