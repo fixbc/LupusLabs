@@ -3,11 +3,13 @@ package edu.bme3890.LupusLabs;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class NewTestActivity extends AppCompatActivity implements SensorEventListener {
@@ -15,6 +17,8 @@ public class NewTestActivity extends AppCompatActivity implements SensorEventLis
     private SensorManager sensorManager;
     private Sensor linearAccelerationSensor;
     TextView sensorTextView;
+
+    public static final String EXTRA_SENSOR_DATA = "com.example.rememberme.EXTRA_SENSOR_DATA";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,13 @@ public class NewTestActivity extends AppCompatActivity implements SensorEventLis
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
         // Do something here if sensor accuracy changes.
+    }
+
+    public void openEmailActivity(View v) {
+        String sensor_data = sensorTextView.getText().toString();
+        Intent intent = new Intent(this, EmailActivity.class);
+        intent.putExtra(EXTRA_SENSOR_DATA, sensor_data);
+        startActivity(intent);
     }
 }
 

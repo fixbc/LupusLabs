@@ -30,6 +30,11 @@ public class EmailActivity extends AppCompatActivity {
                 sendMail();
             }
         });
+
+        Intent dataIntent = getIntent();
+        String sensor_data = dataIntent.getStringExtra(NewTestActivity.EXTRA_SENSOR_DATA);
+
+        mEditTextMessage.setText("Team name: Lupus Labs\n\nLinear acceleration:\n" + sensor_data);
     }
 
     private void sendMail() {
