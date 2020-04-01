@@ -7,7 +7,7 @@
     android:background="#C3E5F5"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".EmailActivity">
+    tools:context="edu.bme3890.lupuslabs.EmailActivity">
 
     <TextView
         android:layout_width="match_parent"

@@ -36,6 +36,9 @@
         <activity
             android:name="edu.bme3890.lupuslabs.EmailActivity"
             android:parentActivityName="edu.bme3890.lupuslabs.OldTestsActivity" />
+        <activity
+            android:name="edu.bme3890.lupuslabs.GraphActivity"
+            android:parentActivityName="edu.bme3890.lupuslabs.MainMenuActivity" />
         <activity android:name="edu.bme3890.lupuslabs.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

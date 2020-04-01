@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("edu.bme3890.displayname", appContext.getPackageName());
+        assertEquals("edu.bme3890.lupuslabs", appContext.getPackageName());
     }
 }

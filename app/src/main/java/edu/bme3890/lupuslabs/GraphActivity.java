@@ -26,7 +26,7 @@ public class GraphActivity extends AppCompatActivity {
     ImageView imageView, cropImageView;
 
     //file-related variables
-    private String FILENAME = "example.png";
+    private String FILENAME = "example.jpg";
     Bitmap imageBitmap;
     File imageFile;
 
