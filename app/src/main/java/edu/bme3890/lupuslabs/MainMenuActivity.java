@@ -1,8 +1,7 @@
-package edu.bme3890.LupusLabs;
+package edu.bme3890.lupuslabs;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -51,6 +50,11 @@ public class MainMenuActivity extends AppCompatActivity {
 
     public void openRedcapActivity(View v) {
         Intent intent = new Intent(this, RedcapActivity.class);
+        startActivity(intent);
+    }
+
+    public void openGraphActivity(View v) {
+        Intent intent = new Intent(this, GraphActivity.class);
         startActivity(intent);
     }
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#C3E1EC"
-    tools:context="edu.bme3890.LupusLabs.MainMenuActivity">
+    tools:context="edu.bme3890.lupuslabs.MainMenuActivity">
 
     <Button
         android:id="@+id/loginButton"
@@ -53,18 +53,18 @@
 
     <Button
         android:id="@+id/newTestButton"
-        android:layout_width="114dp"
-        android:layout_height="41dp"
+        android:layout_width="154dp"
+        android:layout_height="46dp"
         android:background="#95CCF0"
         android:onClick="openNewTestActivity"
-        android:text="New Test"
+        android:text="Accelerometer"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintHorizontal_bias="0.149"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.364" />
+        app:layout_constraintVertical_bias="0.418" />
 
     <Button
         android:id="@+id/oldTestButton"
@@ -109,4 +109,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.129" />
+
+    <Button
+        android:id="@+id/graphButton"
+        android:layout_width="120dp"
+        android:layout_height="45dp"
+        android:background="#95CCF0"
+        android:onClick="openGraphActivity"
+        android:text="New Graph"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.173"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.32" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package edu.bme3890.LupusLabs;
+package edu.bme3890.lupuslabs;
 
 import androidx.appcompat.app.AppCompatActivity;
 

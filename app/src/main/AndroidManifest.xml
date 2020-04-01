@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="edu.bme3890.LupusLabs">
+    package="edu.bme3890.lupuslabs">
 
     <application
         android:allowBackup="true"
@@ -10,33 +10,33 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".AboutUsActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name="edu.bme3890.lupuslabs.AboutUsActivity"
+            android:parentActivityName="edu.bme3890.lupuslabs.MainActivity" />
         <activity
-            android:name=".ForgotPasswordActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name="edu.bme3890.lupuslabs.ForgotPasswordActivity"
+            android:parentActivityName="edu.bme3890.lupuslabs.MainActivity" />
         <activity
-            android:name=".CreateAccountActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name="edu.bme3890.lupuslabs.CreateAccountActivity"
+            android:parentActivityName="edu.bme3890.lupuslabs.MainActivity" />
         <activity
-            android:name=".RedcapActivity"
-            android:parentActivityName=".MainMenuActivity" />
+            android:name="edu.bme3890.lupuslabs.RedcapActivity"
+            android:parentActivityName="edu.bme3890.lupuslabs.MainMenuActivity" />
         <activity
-            android:name=".OldTestsActivity"
-            android:parentActivityName=".MainMenuActivity" />
+            android:name="edu.bme3890.lupuslabs.OldTestsActivity"
+            android:parentActivityName="edu.bme3890.lupuslabs.MainMenuActivity" />
         <activity
-            android:name=".NewTestActivity"
-            android:parentActivityName=".MainMenuActivity" />
+            android:name="edu.bme3890.lupuslabs.NewTestActivity"
+            android:parentActivityName="edu.bme3890.lupuslabs.MainMenuActivity" />
         <activity
-            android:name=".InstructionsActivity"
-            android:parentActivityName=".MainMenuActivity" />
+            android:name="edu.bme3890.lupuslabs.InstructionsActivity"
+            android:parentActivityName="edu.bme3890.lupuslabs.MainMenuActivity" />
         <activity
-            android:name=".MainMenuActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name="edu.bme3890.lupuslabs.MainMenuActivity"
+            android:parentActivityName="edu.bme3890.lupuslabs.MainActivity" />
         <activity
-            android:name=".EmailActivity"
-            android:parentActivityName=".OldTestsActivity" />
-        <activity android:name=".MainActivity">
+            android:name="edu.bme3890.lupuslabs.EmailActivity"
+            android:parentActivityName="edu.bme3890.lupuslabs.OldTestsActivity" />
+        <activity android:name="edu.bme3890.lupuslabs.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

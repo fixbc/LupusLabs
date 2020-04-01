@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Lupus Labs</string>
+    <string name="login">Login</string>
+    <string name="an_app_for_people_with_lupus_nephritis">An App for People with Lupus Nephritis</string>
+    <string name="about_us">About Us</string>
+    <string name="enter_email_address">Enter email address</string>
+    <string name="enter_password">Enter password</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="create_account">Create Account</string>
+    <string name="todo">TODO</string>
+    <string name="image_size">Image size:</string>
+    <string name="empty">[EMPTY]</string>
+    <string name="region_of_interest">Region of Interest:</string>
+    <string name="x1">x1</string>
+    <string name="y1">y1</string>
+    <string name="x2">x2</string>
+    <string name="y2">y2</string>
+    <string name="line_series">LINE SERIES</string>
+    <string name="bar_graph">BAR GRAPH</string>
 </resources>
