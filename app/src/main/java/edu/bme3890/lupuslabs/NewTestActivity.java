@@ -18,7 +18,7 @@ public class NewTestActivity extends AppCompatActivity implements SensorEventLis
     private Sensor linearAccelerationSensor;
     TextView sensorTextView;
 
-    public static final String EXTRA_SENSOR_DATA = "com.example.rememberme.EXTRA_SENSOR_DATA";
+    public static final String EXTRA_SENSOR_DATA = "edu.bme3890.lupuslabs.EXTRA_SENSOR_DATA";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
