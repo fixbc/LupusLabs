@@ -28,7 +28,7 @@ public class NewTestActivity extends AppCompatActivity implements SensorEventLis
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         linearAccelerationSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
 
-        sensorTextView = (TextView) findViewById(R.id.sensorTextView);
+        sensorTextView = findViewById(R.id.sensorTextView);
     }
 
     @Override
@@ -46,7 +46,7 @@ public class NewTestActivity extends AppCompatActivity implements SensorEventLis
     @Override
     public void onSensorChanged(SensorEvent event) {
         float acceleration = event.values[0];
-        sensorTextView.setText(Float.toString(acceleration) + " m/s\u00B2");
+        sensorTextView.setText(acceleration + " m/s\u00B2");
     }
 
     @Override
