@@ -2,8 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.bme3890.lupuslabs">
 
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-feature android:name="android.hardware.camera"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
 
     <application
         android:allowBackup="true"
@@ -12,34 +13,38 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
-            android:name="edu.bme3890.lupuslabs.AboutUsActivity"
-            android:parentActivityName="edu.bme3890.lupuslabs.MainActivity" />
+            android:name=".AboutUsActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
-            android:name="edu.bme3890.lupuslabs.ForgotPasswordActivity"
-            android:parentActivityName="edu.bme3890.lupuslabs.MainActivity" />
+            android:name=".ForgotPasswordActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
-            android:name="edu.bme3890.lupuslabs.CreateAccountActivity"
-            android:parentActivityName="edu.bme3890.lupuslabs.MainActivity" />
+            android:name=".CreateAccountActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
-            android:name="edu.bme3890.lupuslabs.OldTestsActivity"
-            android:parentActivityName="edu.bme3890.lupuslabs.MainMenuActivity" />
+            android:name=".OldTestsActivity"
+            android:parentActivityName=".MainMenuActivity" />
         <activity
-            android:name="edu.bme3890.lupuslabs.NewTestActivity"
-            android:parentActivityName="edu.bme3890.lupuslabs.MainMenuActivity" />
+            android:name=".NewTestActivity"
+            android:parentActivityName=".MainMenuActivity" />
         <activity
-            android:name="edu.bme3890.lupuslabs.InstructionsActivity"
-            android:parentActivityName="edu.bme3890.lupuslabs.MainMenuActivity" />
+            android:name=".InstructionsActivity"
+            android:parentActivityName=".MainMenuActivity" />
         <activity
-            android:name="edu.bme3890.lupuslabs.MainMenuActivity"
-            android:parentActivityName="edu.bme3890.lupuslabs.MainActivity" />
+            android:name=".MainMenuActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
-            android:name="edu.bme3890.lupuslabs.EmailActivity"
-            android:parentActivityName="edu.bme3890.lupuslabs.OldTestsActivity" />
+            android:name=".EmailActivity"
+            android:parentActivityName=".OldTestsActivity" />
         <activity
-            android:name="edu.bme3890.lupuslabs.GraphActivity"
-            android:parentActivityName="edu.bme3890.lupuslabs.MainMenuActivity" />
-        <activity android:name="edu.bme3890.lupuslabs.MainActivity">
+            android:name=".GraphActivity"
+            android:parentActivityName=".MainMenuActivity" />
+        <activity
+            android:name=".CameraActivity"
+            android:parentActivityName=".MainMenuActivity"/>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

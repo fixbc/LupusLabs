@@ -62,4 +62,10 @@ public class MainMenuActivity extends AppCompatActivity {
         Intent intent = new Intent(this, GraphActivity.class);
         startActivity(intent);
     }
+
+    public void openCameraActivity(View v) {
+        Intent intent = new Intent(this, CameraActivity.class);
+        startActivity(intent);
+    }
+
 }
