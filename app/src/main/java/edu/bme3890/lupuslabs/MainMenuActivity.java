@@ -58,11 +58,6 @@ public class MainMenuActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void openRedcapActivity(View v) {
-        Intent intent = new Intent(this, RedcapActivity.class);
-        startActivity(intent);
-    }
-
     public void openGraphActivity(View v) {
         Intent intent = new Intent(this, GraphActivity.class);
         startActivity(intent);
