@@ -40,18 +40,18 @@ public class GraphActivity extends AppCompatActivity {
 
 
         //assign the views
-        x1ET = (EditText) findViewById(R.id.x1ET);
-        y1ET = (EditText) findViewById(R.id.y1ET);
-        x2ET = (EditText) findViewById(R.id.x2ET);
-        y2ET = (EditText) findViewById(R.id.y2ET);
+        x1ET = findViewById(R.id.x1ET);
+        y1ET = findViewById(R.id.y1ET);
+        x2ET = findViewById(R.id.x2ET);
+        y2ET = findViewById(R.id.y2ET);
 
-        imageView = (ImageView) findViewById(R.id.imageView);
-        cropImageView = (ImageView) findViewById(R.id.cropAreaImageView);
-        TextView imageSize = (TextView) findViewById(R.id.imageSizeTV);
+        imageView = findViewById(R.id.imageView);
+        cropImageView = findViewById(R.id.cropAreaImageView);
+        TextView imageSize = findViewById(R.id.imageSizeTV);
 
-        Button lineSeriesBtn = (Button) findViewById(R.id.lineSeriesButton);
-        Button barGraphBtn = (Button) findViewById(R.id.barButton);
-        graph = (GraphView) findViewById(R.id.graph);
+        Button lineSeriesBtn = findViewById(R.id.lineSeriesButton);
+        Button barGraphBtn = findViewById(R.id.barButton);
+        graph = findViewById(R.id.graph);
 
         //assume image already exists in device
         //load image file and create bitmap
@@ -60,8 +60,8 @@ public class GraphActivity extends AppCompatActivity {
         imageBitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
 
         //indicate size of image
-        imageSize.setText(String.valueOf(imageBitmap.getWidth()) + " x " +
-                String.valueOf(imageBitmap.getHeight()));
+        imageSize.setText(imageBitmap.getWidth() + " x " +
+                imageBitmap.getHeight());
 
         //sample line graph code from GraphView documentation
         /*
@@ -133,7 +133,7 @@ public class GraphActivity extends AppCompatActivity {
                 int pixel = croppedIB.getPixel(x,y);
                 redPixels[i] = new DataPoint(i,Color.red(pixel));
                 greenPixels[i] = new DataPoint(i,Color.green(pixel));
-                bluePixels[i++] = new DataPoint(i,Color.blue(pixel));;
+                bluePixels[i++] = new DataPoint(i,Color.blue(pixel));
             }
         }
 

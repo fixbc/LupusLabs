@@ -1,8 +1,9 @@
 package edu.bme3890.lupuslabs;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
 
 public class RedcapActivity extends AppCompatActivity {
 
@@ -12,3 +13,6 @@ public class RedcapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_redcap);
     }
 }
+
+
+

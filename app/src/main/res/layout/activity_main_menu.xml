@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#C3E1EC"
-    tools:context="edu.bme3890.lupuslabs.edu.bme3890.displayname.MainMenuActivity">
+    tools:context="edu.bme3890.lupuslabs.MainMenuActivity">
 
     <Button
         android:id="@+id/loginButton"
@@ -41,7 +41,7 @@
         android:layout_width="114dp"
         android:layout_height="41dp"
         android:background="#95CCF0"
-        android:onClick="openRedcapActivity"
+        android:onClick="launchSurvey"
         android:text="Redcap"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"

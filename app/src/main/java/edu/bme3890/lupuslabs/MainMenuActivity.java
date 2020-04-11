@@ -1,11 +1,11 @@
 package edu.bme3890.lupuslabs;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainMenuActivity extends AppCompatActivity {
 
@@ -26,6 +26,16 @@ public class MainMenuActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    public void launchSurvey(View v) {
+        String url = "https://redcap.vanderbilt.edu/surveys/?s=R378H8RRF8";
+
+        Uri webpage = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 
     public void openInstructionsActivity(View v) {
