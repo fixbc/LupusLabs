@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "892999626625",
+    "firebase_url": "https://sign-in-test-3c34b.firebaseio.com",
+    "project_id": "sign-in-test-3c34b",
+    "storage_bucket": "sign-in-test-3c34b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:892999626625:android:a9f5c917686adadfb9c280",
+        "android_client_info": {
+          "package_name": "edu.bme3890.lupuslabs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "892999626625-heflme0cbmnr88q1s4930s2fmm8g9rr7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAs7NEz6YE-CGzCirA1x44An74Gc6M0glg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "892999626625-heflme0cbmnr88q1s4930s2fmm8g9rr7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
