@@ -1,5 +1,6 @@
 package edu.bme3890.lupuslabs;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference users;
 
     EditText emailEditText, passwordEditText;
-    Button createAccButton;
+    Button createAccButton, loginButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,14 @@ public class MainActivity extends AppCompatActivity {
         emailEditText = (EditText) findViewById(R.id.emailEditText);
         passwordEditText = (EditText) findViewById(R.id.passwordEditText);
         createAccButton = (Button) findViewById(R.id.createAccButton);
+        loginButton = (Button) findViewById(R.id.loginButton);
+
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                login(emailEditText.getText().toString(), passwordEditText.getText().toString());
+            }
+        });
 
         createAccButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +72,32 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
+            }
+        });
+    }
+
+    private void login(final String Email, final String Password) {
+        users.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.child(Email).exists()) {
+                    if(!Email.isEmpty()) {
+                        User login = dataSnapshot.child(Email).getValue(User.class);
+                        if(login.getPassword().equals(Password)){
+                            Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Toast.makeText(MainActivity.this, "Incorrect Password", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    else
+                        Toast.makeText(MainActivity.this, "Username is not Registered", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                //not needed
             }
         });
     }
