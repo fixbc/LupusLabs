@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="0dp"
     android:background="#C3E1EC"
     tools:context="edu.bme3890.lupuslabs.AboutUsActivity">
 
@@ -19,12 +20,12 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.876" />
+        app:layout_constraintVertical_bias="0.851" />
 
     <TextView
         android:id="@+id/textView10"
-        android:layout_width="134dp"
-        android:layout_height="59dp"
+        android:layout_width="124dp"
+        android:layout_height="60dp"
         android:gravity="center"
         android:text="Conner Vastola"
         android:textSize="18sp"
@@ -33,21 +34,21 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.84" />
+        app:layout_constraintVertical_bias="0.779" />
 
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="152dp"
-        android:layout_height="66dp"
+        android:layout_width="115dp"
+        android:layout_height="64dp"
         android:gravity="center"
         android:text="Kevin Lazenby"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView8"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.037"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.839" />
+        app:layout_constraintVertical_bias="0.782" />
 
     <TextView
         android:id="@+id/titleTextView"
@@ -65,18 +66,19 @@
 
     <TextView
         android:id="@+id/aboutUsText"
-        android:layout_width="316dp"
-        android:layout_height="240dp"
-        android:layout_marginTop="48dp"
+        android:layout_width="295dp"
+        android:layout_height="237dp"
         android:gravity="center"
         android:text="Our goal at Lupus Labs is to create a user-friendly smartphone application that enables lupus nephritis patients to monitor their health from the comfort of their homes.  We aim to provide users with a tool that can accurately analyze urinalysis dipsticks, plot user data over time, store and send results to physicians, and provide information about living with lupus nephritis.   "
         android:textColor="#000000"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:fontFamily="sans-serif"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.568"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.068" />
 
     <TextView
         android:id="@+id/MeettextView"
@@ -90,48 +92,49 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.484" />
+        app:layout_constraintVertical_bias="0.466" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="142dp"
-        android:layout_height="203dp"
+        android:layout_width="107dp"
+        android:layout_height="158dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.712"
+        app:layout_constraintVertical_bias="0.67"
         app:srcCompat="@drawable/barrett" />
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="131dp"
-        android:layout_height="159dp"
+        android:layout_width="85dp"
+        android:layout_height="113dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.904"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.697"
+        app:layout_constraintVertical_bias="0.658"
         app:srcCompat="@drawable/conner" />
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="164dp"
-        android:layout_height="161dp"
-        android:layout_marginEnd="268dp"
-        android:layout_marginRight="268dp"
+        android:layout_width="115dp"
+        android:layout_height="111dp"
         android:adjustViewBounds="true"
         android:cropToPadding="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.037"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.696"
+        app:layout_constraintVertical_bias="0.659"
         app:srcCompat="@drawable/kevin" />
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="124dp"
-        android:layout_height="65dp"
+        android:layout_width="104dp"
+        android:layout_height="64dp"
         android:gravity="center"
         android:text="Barrett Fix"
         android:textSize="18sp"
@@ -140,18 +143,18 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.825" />
+        app:layout_constraintVertical_bias="0.78" />
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="303dp"
-        android:layout_height="78dp"
+        android:layout_width="280dp"
+        android:layout_height="68dp"
         android:gravity="center_horizontal"
         android:text="kevin.a.lazenby@vanderbilt.edu\nbarrett.c.fix@vanderbilt.edu\nconner.g.vastola@vanderbilt.edu "
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/meettextView"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.975" />
 </androidx.constraintlayout.widget.ConstraintLayout>
