@@ -1,7 +1,6 @@
 package edu.bme3890.lupuslabs;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.hardware.Sensor;
@@ -11,6 +10,8 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class NewTestActivity extends AppCompatActivity implements SensorEventListener {
 
@@ -58,6 +59,7 @@ public class NewTestActivity extends AppCompatActivity implements SensorEventLis
         String sensor_data = sensorTextView.getText().toString();
         Intent intent = new Intent(this, EmailActivity.class);
         intent.putExtra(EXTRA_SENSOR_DATA, sensor_data);
+        intent.putExtra(Activity.ACTIVITY_SERVICE, this.getClass().getSimpleName());
         startActivity(intent);
     }
 }

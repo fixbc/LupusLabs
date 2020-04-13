@@ -1,10 +1,11 @@
 package edu.bme3890.lupuslabs;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class OldTestsActivity extends AppCompatActivity {
 
@@ -16,6 +17,7 @@ public class OldTestsActivity extends AppCompatActivity {
 
     public void openEmailActivity(View v) {
         Intent intent = new Intent(this, EmailActivity.class);
+        intent.putExtra(Activity.ACTIVITY_SERVICE, this.getClass().getSimpleName());
         startActivity(intent);
     }
 }

@@ -1,20 +1,22 @@
 package edu.bme3890.lupuslabs;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import edu.bme3890.lupuslabs.Model.User;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,9 +38,10 @@ public class MainActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         users = database.getReference("Users");
 
-        emailEditText = (EditText) findViewById(R.id.emailEditText);
-        passwordEditText = (EditText) findViewById(R.id.passwordEditText);
-        createAccButton = (Button) findViewById(R.id.createAccButton);
+        emailEditText = findViewById(R.id.emailEditText);
+        emailEditText.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+        passwordEditText = findViewById(R.id.passwordEditText);
+        createAccButton = findViewById(R.id.createAccButton);
 
         createAccButton.setOnClickListener(new View.OnClickListener() {
             @Override

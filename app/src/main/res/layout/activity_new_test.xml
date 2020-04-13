@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#C3E1EC"
-    tools:context="edu.bme3890.lupuslabs.edu.bme3890.displayname.NewTestActivity">
+    tools:context="edu.bme3890.lupuslabs.NewTestActivity">
 
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Test"
+        android:text="Accelerometer Sensor"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

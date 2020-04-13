@@ -5,16 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#C3E1EC"
-    tools:context="edu.bme3890.lupuslabs.edu.bme3890.displayname.InstructionsActivity">
+    tools:context="edu.bme3890.lupuslabs.InstructionsActivity">
 
     <TextView
         android:id="@+id/instructionsTextView"
-        android:layout_width="160dp"
-        android:layout_height="70dp"
-        android:text="This is where we will include instructions for how to use our app."
+        android:layout_width="365dp"
+        android:layout_height="240dp"
+        android:text="To begin using the app, navigate to the Main Menu.\n\nTo start a new test, click New Test.\n\nTo view previous tests, click Old Tests.\n\nTo check your symptoms, click Redcap.\n\nTo learn more about lupus, click lupus.org."
+        android:textAllCaps="false"
+        android:gravity="center"
+        android:textSize="18sp"
         app:fontFamily="serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Instructions"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.158" />
 </androidx.constraintlayout.widget.ConstraintLayout>

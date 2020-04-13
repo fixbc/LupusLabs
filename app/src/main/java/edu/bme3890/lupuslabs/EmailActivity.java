@@ -1,12 +1,14 @@
 package edu.bme3890.lupuslabs;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class EmailActivity extends AppCompatActivity {
     private EditText mEditTextTo;
@@ -20,6 +22,7 @@ public class EmailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_email);
 
         mEditTextTo = findViewById(R.id.edit_text_to);
+        mEditTextTo.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         mEditTextSubject = findViewById(R.id.edit_text_subject);
         mEditTextMessage = findViewById(R.id.edit_text_message);
 
@@ -33,8 +36,12 @@ public class EmailActivity extends AppCompatActivity {
 
         Intent dataIntent = getIntent();
         String sensor_data = dataIntent.getStringExtra(NewTestActivity.EXTRA_SENSOR_DATA);
+        String startActivity = dataIntent.getStringExtra(Activity.ACTIVITY_SERVICE);
+        String activityToCompare = NewTestActivity.class.getSimpleName();
 
-        mEditTextMessage.setText("Team name: Lupus Labs\n\nLinear acceleration:\n" + sensor_data);
+        if (startActivity.equalsIgnoreCase(activityToCompare)) {
+            mEditTextMessage.setText("Team name: Lupus Labs\n\nLinear acceleration:\n" + sensor_data);
+        }
     }
 
     private void sendMail() {

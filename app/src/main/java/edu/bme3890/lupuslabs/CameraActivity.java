@@ -1,9 +1,5 @@
 package edu.bme3890.lupuslabs;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
@@ -23,16 +19,16 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import edu.bme3890.lupuslabs.CameraFileActivity;
-import edu.bme3890.lupuslabs.R;
 
 public class CameraActivity extends AppCompatActivity {
 
@@ -65,12 +61,12 @@ public class CameraActivity extends AppCompatActivity {
         setContentView(R.layout.activity_camera);
 
         //Get references to View objects ----
-        Button captureButton = (Button) findViewById(R.id.captureButton);
-        Button videoButton = (Button) findViewById(R.id.videoButton);
-        FrameLayout preview = (FrameLayout) findViewById(R.id.previewFrameLayout);
+        Button captureButton = findViewById(R.id.captureButton);
+        Button videoButton = findViewById(R.id.videoButton);
+        FrameLayout preview = findViewById(R.id.previewFrameLayout);
 
-        lastPhotoImageView = (ImageView) findViewById(R.id.photoImageView);
-        notifyTextView = (TextView) findViewById(R.id.notifyTextView);
+        lastPhotoImageView = findViewById(R.id.photoImageView);
+        notifyTextView = findViewById(R.id.notifyTextView);
 
         lastPhotoImageView.setVisibility(View.GONE); // hide upon first use
 
@@ -108,13 +104,9 @@ public class CameraActivity extends AppCompatActivity {
     }
 
     private boolean checkCameraHardware(Context context) {
-        if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)){
-            // this device has a camera
-            return true;
-        } else {
-            // no camera on this device
-            return false;
-        }
+        // this device has a camera
+        // no camera on this device
+        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY);
     }
 
     private boolean checkCameraPermission(Context context, Activity activity) {
