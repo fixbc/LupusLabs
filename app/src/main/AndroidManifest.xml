@@ -40,11 +40,11 @@
             android:name=".EmailActivity"
             android:parentActivityName=".OldTestsActivity" />
         <activity
-            android:name=".GraphActivity"
-            android:parentActivityName=".MainMenuActivity" />
-        <activity
             android:name=".CameraActivity"
             android:parentActivityName=".MainMenuActivity"/>
+        <activity
+            android:name=".GraphActivity"
+            android:parentActivityName=".CameraActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

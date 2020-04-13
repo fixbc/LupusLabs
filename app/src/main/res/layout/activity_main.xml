@@ -27,21 +27,21 @@
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.368" />
+        app:layout_constraintVertical_bias="0.324" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="356dp"
         android:layout_height="100dp"
-        android:background="#FFFFFF"
+        android:background="#C3E1EC"
+        android:contentDescription="@string/todo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.105"
-        app:srcCompat="@drawable/app_logo2"
-        android:contentDescription="@string/todo" />
+        app:srcCompat="@drawable/app_logo2" />
 
     <Button
         android:id="@+id/loginButton"

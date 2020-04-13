@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.media.CamcorderProfile;
@@ -54,6 +55,10 @@ public class CameraActivity extends AppCompatActivity {
     private Activity thisActivity;
     public static final int REQUEST_CAMERA = 29181;
 
+    public void openGraphActivity(View v) {
+        Intent intent = new Intent(this, GraphActivity.class);
+        startActivity(intent);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,7 +106,6 @@ public class CameraActivity extends AppCompatActivity {
         videoButton.setEnabled(false);
 
     }
-
 
     private boolean checkCameraHardware(Context context) {
         if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)){
@@ -338,6 +342,7 @@ public class CameraActivity extends AppCompatActivity {
         }
 
         return mediaFile;
+
     }
 
 }

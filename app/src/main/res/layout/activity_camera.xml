@@ -46,6 +46,14 @@
             android:layout_height="98dp"
             android:layout_weight="1"
             android:text="no images taken" />
+
+        <Button
+            android:id="@+id/analyzeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="openGraphActivity"
+            android:text="Analyze" />
     </LinearLayout>
 
 </LinearLayout>
