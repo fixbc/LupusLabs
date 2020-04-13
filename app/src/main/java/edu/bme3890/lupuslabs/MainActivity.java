@@ -49,10 +49,10 @@ public class MainActivity extends AppCompatActivity {
                 users.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.child(user.getEmail()).exists())
-                            Toast.makeText(MainActivity.this, "This email is already registered", Toast.LENGTH_SHORT).show();
+                        if (dataSnapshot.child(user.getUsernamel()).exists())
+                            Toast.makeText(MainActivity.this, "This username is already registered", Toast.LENGTH_SHORT).show();
                         else {
-                            users.child(user.getEmail()).setValue(user);
+                            users.child(user.getUsernamel()).setValue(user);
                             Toast.makeText(MainActivity.this, "Sign up Successful", Toast.LENGTH_SHORT).show();
                         }
                     }
