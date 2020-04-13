@@ -23,7 +23,7 @@ public class User {
         this.password = password;
     }
 
-    public String getUsernamel() {
+    public String getUsername() {
         return username;
     }
 
