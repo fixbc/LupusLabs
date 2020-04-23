@@ -8,12 +8,78 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:892999626625:android:af8b1193aba23220b9c280",
+        "android_client_info": {
+          "package_name": "com.example.emailverification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "892999626625-heflme0cbmnr88q1s4930s2fmm8g9rr7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAs7NEz6YE-CGzCirA1x44An74Gc6M0glg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "892999626625-heflme0cbmnr88q1s4930s2fmm8g9rr7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:892999626625:android:a09e3d4a5b667080b9c280",
+        "android_client_info": {
+          "package_name": "com.example.userdatabasetest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "892999626625-heflme0cbmnr88q1s4930s2fmm8g9rr7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAs7NEz6YE-CGzCirA1x44An74Gc6M0glg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "892999626625-heflme0cbmnr88q1s4930s2fmm8g9rr7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:892999626625:android:a9f5c917686adadfb9c280",
         "android_client_info": {
           "package_name": "edu.bme3890.lupuslabs"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "892999626625-2ckhfteovkl2al0apt8dm78olenni06n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.bme3890.lupuslabs",
+            "certificate_hash": "a5b3d85efdd824df22a5168ea385e79ab83ef7a7"
+          }
+        },
         {
           "client_id": "892999626625-heflme0cbmnr88q1s4930s2fmm8g9rr7.apps.googleusercontent.com",
           "client_type": 3
