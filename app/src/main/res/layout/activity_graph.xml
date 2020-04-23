@@ -9,11 +9,12 @@
 
     <com.jjoe64.graphview.GraphView
         android:id="@+id/graph"
-        android:layout_width="391dp"
+        android:layout_width="200dp"
         android:layout_height="187dp"
         android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
@@ -49,6 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:gravity="center_horizontal"
             android:text="@string/image_size"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -63,55 +65,20 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:text="@string/region_of_interest" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="41dp"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/x1ET"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:autofillHints=""
-                android:hint="@string/x1"
-                android:inputType="number" />
-
-            <EditText
-                android:id="@+id/y1ET"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:autofillHints=""
-                android:hint="@string/y1"
-                android:inputType="number" />
-
-            <EditText
-                android:id="@+id/x2ET"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:autofillHints=""
-                android:hint="@string/x2"
-                android:inputType="number" />
-
-            <EditText
-                android:id="@+id/y2ET"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:autofillHints=""
-                android:hint="@string/y2"
-                android:inputType="number" />
-        </LinearLayout>
 
         <ImageView
             android:id="@+id/cropAreaImageView"
             android:layout_width="match_parent"
-            android:layout_height="84dp"
+            android:layout_height="56dp"
             android:contentDescription="@string/todo"
+            app:srcCompat="@android:drawable/btn_star_big_off" />
+
+        <ImageView
+            android:id="@+id/cropAreaImageView2"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
             app:srcCompat="@android:drawable/btn_star_big_off" />
 
         <Button
@@ -128,5 +95,18 @@
             android:onClick="createGraph"
             android:text="@string/bar_graph" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="openOldTestsActivity"
+        android:text="Save Graph"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.82"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.884" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

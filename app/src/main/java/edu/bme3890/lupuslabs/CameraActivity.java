@@ -6,14 +6,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
-import android.media.CamcorderProfile;
-import android.media.MediaRecorder;
-import android.media.MediaRecorder.VideoSource;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -37,15 +36,13 @@ public class CameraActivity extends AppCompatActivity {
 
     //variables to manage camera, video and visualization
     private Camera c;
-    private MediaRecorder videoMR = new MediaRecorder();
-    private boolean isRecording = false;
 
     public static final int MEDIA_TYPE_IMAGE = 1;
-    public static final int MEDIA_TYPE_VIDEO = 2;
 
     CameraFileActivity mPreview;
     ImageView lastPhotoImageView;
     TextView notifyTextView;
+    TextView timerTextView;
 
     //variables to manage permissions
     private Activity thisActivity;
@@ -53,6 +50,7 @@ public class CameraActivity extends AppCompatActivity {
 
     public void openGraphActivity(View v) {
         Intent intent = new Intent(this, GraphActivity.class);
+        intent.putExtra("imageName", getOutputMediaFile(MEDIA_TYPE_IMAGE).getName());
         startActivity(intent);
     }
     @Override
@@ -62,11 +60,11 @@ public class CameraActivity extends AppCompatActivity {
 
         //Get references to View objects ----
         Button captureButton = findViewById(R.id.captureButton);
-        Button videoButton = findViewById(R.id.videoButton);
         FrameLayout preview = findViewById(R.id.previewFrameLayout);
 
         lastPhotoImageView = findViewById(R.id.photoImageView);
         notifyTextView = findViewById(R.id.notifyTextView);
+        timerTextView = findViewById(R.id.timerTextView);
 
         lastPhotoImageView.setVisibility(View.GONE); // hide upon first use
 
@@ -86,8 +84,19 @@ public class CameraActivity extends AppCompatActivity {
         // --- done as part of the activity_main layout file
 
         // Create our Preview view and set it as the content of our activity.
+        c.setDisplayOrientation(90);
         mPreview = new CameraFileActivity(this, c);
         preview.addView(mPreview);
+        TextView textViewLeft = findViewById(R.id.textViewLeft);
+        TextView textViewRight = findViewById(R.id.textViewRight);
+
+        ((ViewGroup)textViewLeft.getParent()).removeView(textViewLeft);
+        preview.addView(textViewLeft);
+
+        ((ViewGroup)textViewRight.getParent()).removeView(textViewRight);
+        preview.addView(textViewRight);
+
+        // setCameraDisplayOrientation(this, 29181, c);
 
         //Setup Listeners for Capture ----
         // --- done through the Camera.PictureCallback method below
@@ -97,9 +106,6 @@ public class CameraActivity extends AppCompatActivity {
 
         //Release the Camera ----
         // --- done through the onPause method of the activity
-
-        //disable video button temporarily
-        videoButton.setEnabled(false);
 
     }
 
@@ -182,14 +188,16 @@ public class CameraActivity extends AppCompatActivity {
             }
 
             //make preview available again
+            camera.setDisplayOrientation(90);
             camera.startPreview();
+
 
             //make image visible within the imageView
             if (!lastPhotoImageView.isShown()) {
                 lastPhotoImageView.setVisibility(View.VISIBLE);
             }
             lastPhotoImageView.setImageURI(Uri.fromFile(pictureFile));
-            notifyTextView.setText("Last picture taken:\n");
+            notifyTextView.setText("Last picture taken: ");
             notifyTextView.append(pictureFile.getName());
         }
     };
@@ -197,96 +205,22 @@ public class CameraActivity extends AppCompatActivity {
     public void takePicture(View v){
         notifyTextView.setText("Capturing Image...");
         c.takePicture(null, null, mPicture);
-    }
 
-    private boolean prepareVideoRecorder(){
-        releaseCamera();
-        c = getCameraInstance();
-        videoMR = new MediaRecorder();
+        new CountDownTimer(60000, 1000) {
 
-        // Step 1: Unlock and set camera to MediaRecorder
-        c.unlock();
-        videoMR.setCamera(c);
-
-        // Step 2: Set sources
-        // videoMR.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
-        videoMR.setVideoSource(VideoSource.CAMERA);
-
-        // Step 3: Set a CamcorderProfile (requires API Level 8 or higher)
-        videoMR.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_HIGH));
-
-        // Step 4: Set output file
-        videoMR.setOutputFile(getOutputMediaFile(MEDIA_TYPE_VIDEO).toString());
-
-        // Step 5: Set the preview output
-        videoMR.setPreviewDisplay(mPreview.getHolder().getSurface());
-
-        // Step 6: Prepare configured MediaRecorder
-        try {
-            videoMR.prepare();
-        } catch (IllegalStateException e) {
-            Log.d(TAG, "IllegalStateException preparing MediaRecorder: " + e.getMessage());
-            releaseMediaRecorder();
-            return false;
-        } catch (IOException e) {
-            Log.d(TAG, "IOException preparing MediaRecorder: " + e.getMessage());
-            releaseMediaRecorder();
-            return false;
-        }
-        return true;
-    }
-
-    /*public void takeVideo(View v){
-        if (isRecording) { //button press toggles recording state
-            notifyTextView.setText("Done recoriding video!");
-            videoMR.stop();
-            videoMR.release();;
-            c.lock();
-            isRecording = false;
-        } else {
-            notifyTextView.setText("Recording Video...");
-            lastPhotoImageView.setVisibility(View.GONE);
-            isRecording = true;
-
-            //?? disable capture button??//
-
-            // Step 1: Unlock and set camera to MediaRecorder
-            c.unlock();
-            videoMR.setCamera(c);
-
-            // Step 2: Set sources
-            //videoMR.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
-            videoMR.setVideoSource(MediaRecorder.VideoSource.DEFAULT);
-
-            // Step 3: Set a CamcorderProfile (requires API Level 8 or higher)
-            videoMR.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_HIGH));
-
-            // Step 4: Set output file
-            videoMR.setOutputFile(getOutputMediaFile(MEDIA_TYPE_VIDEO).toString());
-
-            // Step 5: Set the preview output
-            videoMR.setPreviewDisplay(mPreview.getHolder().getSurface());
-
-            // Step 6: Prepare configured MediaRecorder
-            try {
-                videoMR.prepare();
-            } catch (IllegalStateException e) {
-                Log.d(TAG, "IllegalStateException preparing MediaRecorder: " + e.getMessage());
-                releaseMediaRecorder();
-            } catch (IOException e) {
-                Log.d(TAG, "IOException preparing MediaRecorder: " + e.getMessage());
-                releaseMediaRecorder();
+            public void onTick(long millisUntilFinished) {
+                timerTextView.setText("timer: " + millisUntilFinished / 1000);
             }
 
-            videoMR.start();
-        }
-    }*/
-
+            public void onFinish() {
+                timerTextView.setText("done!");
+            }
+        }.start();
+    }
 
     @Override
     protected void onPause() {
         super.onPause();
-        releaseMediaRecorder(); // release media recorder first if in use
         releaseCamera();    // release the camera immediately on pause event
     }
 
@@ -294,15 +228,6 @@ public class CameraActivity extends AppCompatActivity {
         if (c != null){
             c.release();    // release the camera for other applications
             c = null;
-        }
-    }
-
-    private void releaseMediaRecorder(){
-        if (videoMR != null) {
-            videoMR.reset();   // clear recorder configuration
-            videoMR.release(); // release the recorder object
-            videoMR = null;
-            c.lock();           // lock camera for later use
         }
     }
 
@@ -325,10 +250,7 @@ public class CameraActivity extends AppCompatActivity {
         File mediaFile;
         if (type == MEDIA_TYPE_IMAGE){
             mediaFile = new File(mediaStorageDir.getPath() + File.separator +
-                    "IMG_"+ timeStamp + ".jpg");
-        } else if(type == MEDIA_TYPE_VIDEO) {
-            mediaFile = new File(mediaStorageDir.getPath() + File.separator +
-                    "VID_"+ timeStamp + ".mp4");
+                    "image" + ".jpg");
         } else {
             return null;
         }
@@ -336,5 +258,4 @@ public class CameraActivity extends AppCompatActivity {
         return mediaFile;
 
     }
-
 }
