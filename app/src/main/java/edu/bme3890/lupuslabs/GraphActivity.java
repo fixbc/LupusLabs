@@ -259,19 +259,19 @@ public class GraphActivity extends AppCompatActivity {
             resultTextView.setText("Result: negative");
         } else if (index == 1) {
             mgdL15ImageView.setVisibility(View.VISIBLE);
-            resultTextView.setText("Result: 15 mg/dL");
+            resultTextView.setText("Result: 0-15 mg/dL");
         } else if (index == 2) {
             mgdL30ImageView.setVisibility(View.VISIBLE);
-            resultTextView.setText("Result: 30 mg/dL");
+            resultTextView.setText("Result: 15-30 mg/dL");
         } else if (index == 3) {
             mgdL100ImageView.setVisibility(View.VISIBLE);
-            resultTextView.setText("Result: 100 mg/dL");
+            resultTextView.setText("Result: 30-100 mg/dL");
         } else if (index == 4) {
             mgdL300ImageView.setVisibility(View.VISIBLE);
-            resultTextView.setText("Result: 300 mg/dL");
+            resultTextView.setText("Result: 100-300 mg/dL");
         } else if (index == 5) {
             mgdL2000ImageView.setVisibility(View.VISIBLE);
-            resultTextView.setText("Result: 2000 mg/dL");
+            resultTextView.setText("Result: 300-2000 mg/dL");
         }
 
     }

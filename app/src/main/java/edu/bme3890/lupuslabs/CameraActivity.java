@@ -9,6 +9,7 @@ import android.hardware.Camera;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class CameraActivity extends AppCompatActivity {
 
@@ -40,8 +43,12 @@ public class CameraActivity extends AppCompatActivity {
 
     CameraFileActivity mPreview;
     ImageView lastPhotoImageView;
+    ImageView lastPhotoImageView2;
+    ImageView lastPhotoImageView3;
     TextView notifyTextView;
     TextView timerTextView;
+    TextView instructionsTextView;
+    int photoNumber;
 
     //variables to manage permissions
     private Activity thisActivity;
@@ -62,13 +69,19 @@ public class CameraActivity extends AppCompatActivity {
         FrameLayout preview = findViewById(R.id.previewFrameLayout);
 
         lastPhotoImageView = findViewById(R.id.photoImageView);
+        lastPhotoImageView2 = findViewById(R.id.photoImageView2);
+        lastPhotoImageView3 = findViewById(R.id.photoImageView3);
         notifyTextView = findViewById(R.id.notifyTextView);
         timerTextView = findViewById(R.id.timerTextView);
+        instructionsTextView = findViewById(R.id.instructionsTextView);
 
         notifyTextView.setVisibility(View.GONE);
         timerTextView.setVisibility(View.GONE);
+        photoNumber = 1;
 
         lastPhotoImageView.setVisibility(View.GONE); // hide upon first use
+        lastPhotoImageView2.setVisibility(View.GONE);
+        lastPhotoImageView3.setVisibility(View.GONE);
 
         //Detect and Access Camera ----
         //check if camera exists - may not be needed if camera is required by app
@@ -172,6 +185,7 @@ public class CameraActivity extends AppCompatActivity {
         public void onPictureTaken(byte[] data, Camera camera) {
 
             File pictureFile = getOutputMediaFile(MEDIA_TYPE_IMAGE);
+            photoNumber++;
             if (pictureFile == null){
                 Log.d(TAG, "Error creating media file, check storage permissions");
                 return;
@@ -195,12 +209,40 @@ public class CameraActivity extends AppCompatActivity {
             //make image visible within the imageView
             if (!lastPhotoImageView.isShown()) {
                 lastPhotoImageView.setVisibility(View.VISIBLE);
+
             }
-            lastPhotoImageView.setImageURI(Uri.fromFile(pictureFile));
-            notifyTextView.setVisibility(View.VISIBLE);
-            timerTextView.setVisibility(View.VISIBLE);
-            notifyTextView.setText("Last picture taken: ");
-            notifyTextView.append(pictureFile.getName());
+            if (pictureFile.getName().equalsIgnoreCase("image1.jpg")){
+                lastPhotoImageView.setImageURI(Uri.fromFile(pictureFile));
+                instructionsTextView.setVisibility(View.GONE);
+                notifyTextView.setVisibility(View.VISIBLE);
+                timerTextView.setVisibility(View.VISIBLE);
+                notifyTextView.setText("Last picture taken: ");
+                notifyTextView.append(pictureFile.getName());
+            } else if (pictureFile.getName().equalsIgnoreCase("image2.jpg")) {
+                lastPhotoImageView2.setVisibility(View.VISIBLE);
+                lastPhotoImageView2.setImageURI(Uri.fromFile(pictureFile));
+                instructionsTextView.setVisibility(View.GONE);
+                notifyTextView.setVisibility(View.VISIBLE);
+                timerTextView.setVisibility(View.VISIBLE);
+                notifyTextView.setText("Last picture taken: ");
+                notifyTextView.append(pictureFile.getName());
+            } else if (pictureFile.getName().equalsIgnoreCase("image3.jpg")) {
+                lastPhotoImageView3.setVisibility(View.VISIBLE);
+                lastPhotoImageView3.setImageURI(Uri.fromFile(pictureFile));
+                instructionsTextView.setVisibility(View.GONE);
+                notifyTextView.setVisibility(View.VISIBLE);
+                timerTextView.setVisibility(View.VISIBLE);
+                notifyTextView.setText("Last picture taken: ");
+                notifyTextView.append(pictureFile.getName());
+            } else {
+                lastPhotoImageView.setImageURI(Uri.fromFile(pictureFile));
+                instructionsTextView.setVisibility(View.GONE);
+                notifyTextView.setVisibility(View.VISIBLE);
+                timerTextView.setVisibility(View.VISIBLE);
+                notifyTextView.setText("Last picture taken: ");
+                notifyTextView.append(pictureFile.getName());
+            }
+
         }
     };
 
@@ -208,16 +250,34 @@ public class CameraActivity extends AppCompatActivity {
         notifyTextView.setText("Capturing Image...");
         c.takePicture(null, null, mPicture);
 
-//        new CountDownTimer(60000, 1000) {
-//
-//            public void onTick(long millisUntilFinished) {
-//                timerTextView.setText("timer: " + millisUntilFinished / 1000);
-//            }
-//
-//            public void onFinish() {
-//                timerTextView.setText("done!");
-//            }
-//        }.start();
+        new Timer().schedule(new TimerTask() {
+
+            @Override
+            public void run() {
+                notifyTextView.setText("Capturing Image...");
+                c.takePicture(null, null, mPicture);
+
+                new Timer().schedule(new TimerTask() {
+
+                    @Override
+                    public void run() {
+                        notifyTextView.setText("Capturing Image...");
+                        c.takePicture(null, null, mPicture);
+                    }
+                }, 30000);
+            }
+        }, 30000);
+
+        new CountDownTimer(60000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                timerTextView.setText("timer: " + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+                timerTextView.setText("timer: done!");
+            }
+        }.start();
     }
 
     @Override
@@ -252,7 +312,7 @@ public class CameraActivity extends AppCompatActivity {
         File mediaFile;
         if (type == MEDIA_TYPE_IMAGE){
             mediaFile = new File(mediaStorageDir.getPath() + File.separator +
-                    "image" + ".jpg");
+                    "image" + photoNumber + ".jpg");
         } else {
             return null;
         }
