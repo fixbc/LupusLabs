@@ -120,5 +120,6 @@
     <string name="y2">y2</string>
     <string name="line_series">LINE SERIES</string>
     <string name="bar_graph">BAR GRAPH</string>
+    <string name="run_test">RUN TEST</string>
     <string name="go_to_main_menu">Go to Main Menu</string>
 </resources>

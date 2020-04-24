@@ -9,7 +9,6 @@ import android.hardware.Camera;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,6 +65,9 @@ public class CameraActivity extends AppCompatActivity {
         notifyTextView = findViewById(R.id.notifyTextView);
         timerTextView = findViewById(R.id.timerTextView);
 
+        notifyTextView.setVisibility(View.GONE);
+        timerTextView.setVisibility(View.GONE);
+
         lastPhotoImageView.setVisibility(View.GONE); // hide upon first use
 
         //Detect and Access Camera ----
@@ -95,8 +97,6 @@ public class CameraActivity extends AppCompatActivity {
 
         ((ViewGroup)textViewRight.getParent()).removeView(textViewRight);
         preview.addView(textViewRight);
-
-        // setCameraDisplayOrientation(this, 29181, c);
 
         //Setup Listeners for Capture ----
         // --- done through the Camera.PictureCallback method below
@@ -197,6 +197,8 @@ public class CameraActivity extends AppCompatActivity {
                 lastPhotoImageView.setVisibility(View.VISIBLE);
             }
             lastPhotoImageView.setImageURI(Uri.fromFile(pictureFile));
+            notifyTextView.setVisibility(View.VISIBLE);
+            timerTextView.setVisibility(View.VISIBLE);
             notifyTextView.setText("Last picture taken: ");
             notifyTextView.append(pictureFile.getName());
         }
@@ -206,16 +208,16 @@ public class CameraActivity extends AppCompatActivity {
         notifyTextView.setText("Capturing Image...");
         c.takePicture(null, null, mPicture);
 
-        new CountDownTimer(60000, 1000) {
-
-            public void onTick(long millisUntilFinished) {
-                timerTextView.setText("timer: " + millisUntilFinished / 1000);
-            }
-
-            public void onFinish() {
-                timerTextView.setText("done!");
-            }
-        }.start();
+//        new CountDownTimer(60000, 1000) {
+//
+//            public void onTick(long millisUntilFinished) {
+//                timerTextView.setText("timer: " + millisUntilFinished / 1000);
+//            }
+//
+//            public void onFinish() {
+//                timerTextView.setText("done!");
+//            }
+//        }.start();
     }
 
     @Override

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -44,6 +45,34 @@ public class GraphActivity extends AppCompatActivity {
     Bitmap lineBitmap;
     Bitmap barBitmap;
 
+    ImageView negativeImageView;
+    Bitmap negativeBitmap;
+    double[] negativeRGBVector = new double[3];
+
+    ImageView mgdL15ImageView;
+    Bitmap mgdL15Bitmap;
+    double[] mgdL15RGBVector = new double[3];
+
+    ImageView mgdL30ImageView;
+    Bitmap mgdL30Bitmap;
+    double[] mgdL30RGBVector = new double[3];
+
+    ImageView mgdL100ImageView;
+    Bitmap mgdL100Bitmap;
+    double[] mgdL100RGBVector = new double[3];
+
+    ImageView mgdL300ImageView;
+    Bitmap mgdL300Bitmap;
+    double[] mgdL300RGBVector = new double[3];
+
+    ImageView mgdL2000ImageView;
+    Bitmap mgdL2000Bitmap;
+    double[] mgdL2000RGBVector = new double[3];
+
+    double[] sampleRGBVector = new double[3];
+
+    TextView resultTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +86,8 @@ public class GraphActivity extends AppCompatActivity {
         cropImageView2 = findViewById(R.id.cropAreaImageView2);
         TextView imageSize = findViewById(R.id.imageSizeTV);
 
-        Button lineSeriesBtn = findViewById(R.id.lineSeriesButton);
-        Button barGraphBtn = findViewById(R.id.barButton);
+        //Button lineSeriesBtn = findViewById(R.id.lineSeriesButton);
+        Button barGraphBtn = findViewById(R.id.runTestButton);
         graph = findViewById(R.id.graph);
 
         //assume image already exists in device
@@ -72,22 +101,52 @@ public class GraphActivity extends AppCompatActivity {
         imageSize.setText(imageBitmap.getWidth() + " x " +
                 imageBitmap.getHeight());
 
+        negativeImageView = findViewById(R.id.negativeImageView);
+        mgdL15ImageView = findViewById(R.id.mgdL15ImageView);
+        mgdL30ImageView = findViewById(R.id.mgdL30ImageView);
+        mgdL100ImageView = findViewById(R.id.mgdL100ImageView);
+        mgdL300ImageView = findViewById(R.id.mgdL300ImageView);
+        mgdL2000ImageView = findViewById(R.id.mgdL2000ImageView);
+
+        negativeBitmap = ((BitmapDrawable) negativeImageView.getDrawable()).getBitmap();
+        mgdL15Bitmap = ((BitmapDrawable) mgdL15ImageView.getDrawable()).getBitmap();
+        mgdL30Bitmap = ((BitmapDrawable) mgdL30ImageView.getDrawable()).getBitmap();
+        mgdL100Bitmap = ((BitmapDrawable) mgdL100ImageView.getDrawable()).getBitmap();
+        mgdL300Bitmap = ((BitmapDrawable) mgdL300ImageView.getDrawable()).getBitmap();
+        mgdL2000Bitmap = ((BitmapDrawable) mgdL2000ImageView.getDrawable()).getBitmap();
+
+        negativeRGBVector = getavgRGBVector(negativeBitmap);
+        mgdL15RGBVector = getavgRGBVector(mgdL15Bitmap);
+        mgdL30RGBVector = getavgRGBVector(mgdL30Bitmap);
+        mgdL100RGBVector = getavgRGBVector(mgdL100Bitmap);
+        mgdL300RGBVector = getavgRGBVector(mgdL300Bitmap);
+        mgdL2000RGBVector = getavgRGBVector(mgdL2000Bitmap);
+
+        negativeImageView.setVisibility(View.GONE);
+        mgdL15ImageView.setVisibility(View.GONE);
+        mgdL30ImageView.setVisibility(View.GONE);
+        mgdL100ImageView.setVisibility(View.GONE);
+        mgdL300ImageView.setVisibility(View.GONE);
+        mgdL2000ImageView.setVisibility(View.GONE);
+
+        resultTextView = findViewById(R.id.resultTextView);
     }
 
     //function activated on button press
     public void createGraph(View v){
         //determine which button was selected
         switch (v.getId()){
-            case R.id.barButton://barButton Graph
+            case R.id.runTestButton://barButton Graph
                 //do something
-                runBarSeries(extractCropArea());
+                sampleRGBVector = getavgRGBVector(extractCropArea());
+                compareRGBVectors(sampleRGBVector);
                 imageView.setVisibility(View.GONE);
                 break;
-            case R.id.lineSeriesButton:
+            //case R.id.lineSeriesButton:
                 //do something
-                runLineSeries(extractCropArea());
-                imageView.setVisibility(View.GONE);
-                break;
+                //runLineSeries(extractCropArea());
+                //imageView.setVisibility(View.GONE);
+                //break;
             default:
                 //do nothing
 
@@ -116,6 +175,106 @@ public class GraphActivity extends AppCompatActivity {
         return croppedImageBitmap2;
     }
 
+    public double[] getavgRGBVector(Bitmap croppedIB) {
+        int i = 0, h = croppedIB.getHeight()/2, w = croppedIB.getWidth()/2;
+        int numPixels = h * w;
+
+        int[] redPixels = new int[numPixels], greenPixels = new int[numPixels],
+                bluePixels = new int[numPixels];
+
+        //extract color values into appropriate int arrays
+        for (int x = w/2; x < w + (w/2); x++){
+            for (int y = h/2; y < h + (h/2); y++){
+                int pixel = croppedIB.getPixel(x,y);
+                redPixels[i] = Color.red(pixel);
+                greenPixels[i] = Color.green(pixel);
+                bluePixels[i++] = Color.blue(pixel);
+            }
+        }
+
+        // find average red value
+        int redSum = 0;
+        for (int value : redPixels) {
+            redSum += value;
+        }
+
+        double redAvg = (double) redSum / redPixels.length;
+
+        // find average green value
+        int greenSum = 0;
+        for (int value : greenPixels) {
+            greenSum += value;
+        }
+
+        double greenAvg = (double) greenSum / greenPixels.length;
+
+        // find average blue value
+        int blueSum = 0;
+        for (int value : bluePixels) {
+            blueSum += value;
+        }
+
+        double blueAvg = (double) blueSum / bluePixels.length;
+
+        double[] avgRGBVector = {redAvg, greenAvg, blueAvg};
+
+        return avgRGBVector;
+    }
+
+    public void compareRGBVectors(double[] sampleRGBVector) {
+
+        double[] angles = new double[6];
+
+        angles[0] = Math.sqrt(Math.pow(sampleRGBVector[0] - negativeRGBVector[0], 2) + Math.pow(sampleRGBVector[1] - negativeRGBVector[1], 2) +
+                        Math.pow(sampleRGBVector[2] - negativeRGBVector[2], 2));
+
+        angles[1] = Math.sqrt(Math.pow(sampleRGBVector[0] - mgdL15RGBVector[0], 2) + Math.pow(sampleRGBVector[1] - mgdL15RGBVector[1], 2) +
+                Math.pow(sampleRGBVector[2] - mgdL15RGBVector[2], 2));
+
+        angles[2] = Math.sqrt(Math.pow(sampleRGBVector[0] - mgdL30RGBVector[0], 2) + Math.pow(sampleRGBVector[1] - mgdL30RGBVector[1], 2) +
+                Math.pow(sampleRGBVector[2] - mgdL30RGBVector[2], 2));
+
+        angles[3] = Math.sqrt(Math.pow(sampleRGBVector[0] - mgdL100RGBVector[0], 2) + Math.pow(sampleRGBVector[1] - mgdL100RGBVector[1], 2) +
+                Math.pow(sampleRGBVector[2] - mgdL100RGBVector[2], 2));
+
+        angles[4] = Math.sqrt(Math.pow(sampleRGBVector[0] - mgdL300RGBVector[0], 2) + Math.pow(sampleRGBVector[1] - mgdL300RGBVector[1], 2) +
+                Math.pow(sampleRGBVector[2] - mgdL300RGBVector[2], 2));
+
+        angles[5] = Math.sqrt(Math.pow(sampleRGBVector[0] - mgdL2000RGBVector[0], 2) + Math.pow(sampleRGBVector[1] - mgdL2000RGBVector[1], 2) +
+                Math.pow(sampleRGBVector[2] - mgdL2000RGBVector[2], 2));
+
+        int index = 0;
+        double min = angles[index];
+
+        for (int i=1; i < angles.length; i++) {
+
+            if (angles[i] < min) {
+                min = angles[i];
+                index = i;
+            }
+        }
+
+        if (index == 0) {
+            negativeImageView.setVisibility(View.VISIBLE);
+            resultTextView.setText("Result: negative");
+        } else if (index == 1) {
+            mgdL15ImageView.setVisibility(View.VISIBLE);
+            resultTextView.setText("Result: 15 mg/dL");
+        } else if (index == 2) {
+            mgdL30ImageView.setVisibility(View.VISIBLE);
+            resultTextView.setText("Result: 30 mg/dL");
+        } else if (index == 3) {
+            mgdL100ImageView.setVisibility(View.VISIBLE);
+            resultTextView.setText("Result: 100 mg/dL");
+        } else if (index == 4) {
+            mgdL300ImageView.setVisibility(View.VISIBLE);
+            resultTextView.setText("Result: 300 mg/dL");
+        } else if (index == 5) {
+            mgdL2000ImageView.setVisibility(View.VISIBLE);
+            resultTextView.setText("Result: 2000 mg/dL");
+        }
+
+    }
 
     public Bitmap runLineSeries (Bitmap croppedIB){
         //for each pixel in the image, extract the red, green and blue values

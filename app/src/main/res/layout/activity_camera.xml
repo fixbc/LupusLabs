@@ -18,10 +18,13 @@
             android:id="@+id/textViewLeft"
             android:layout_width="150dp"
             android:layout_height="367dp"
-            android:background="@color/colorPrimary"
             android:layout_gravity="left"
-            android:visibility="visible"
-            android:foreground="@color/colorPrimary"/>
+            android:background="@color/colorPrimary"
+            android:foreground="@color/colorPrimary"
+            android:gravity="center_horizontal"
+            android:text="Align the test strip so that it fits within the camera window."
+            android:textColor="#FFFFFF"
+            android:visibility="visible" />
 
         <TextView
             android:id="@+id/textViewRight"
