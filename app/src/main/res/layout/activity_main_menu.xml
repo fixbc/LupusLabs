@@ -9,11 +9,12 @@
 
     <Button
         android:id="@+id/loginButton"
-        android:layout_width="114dp"
-        android:layout_height="41dp"
+        android:layout_width="134dp"
+        android:layout_height="46dp"
         android:background="#95CCF0"
         android:onClick="launchWebsite"
         android:text="lupus.org"
+        android:textColor="#FFFFFFFF"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,26 +25,28 @@
 
     <Button
         android:id="@+id/instructionsButton"
-        android:layout_width="250dp"
-        android:layout_height="41dp"
+        android:layout_width="248dp"
+        android:layout_height="52dp"
         android:background="#95CCF0"
         android:onClick="openInstructionsActivity"
         android:text="Instructions"
+        android:textColor="#FFFFFFFF"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.592" />
+        app:layout_constraintVertical_bias="0.618" />
 
     <Button
         android:id="@+id/launch_email_button"
-        android:layout_width="114dp"
-        android:layout_height="41dp"
+        android:layout_width="120dp"
+        android:layout_height="48dp"
         android:background="#95CCF0"
         android:onClick="launchSurvey"
         android:text="Redcap"
+        android:textColor="#FFFFFFFF"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,47 +57,51 @@
 
     <Button
         android:id="@+id/newTestButton"
-        android:layout_width="154dp"
-        android:layout_height="46dp"
+        android:layout_width="164dp"
+        android:layout_height="50dp"
         android:background="#95CCF0"
         android:onClick="openNewTestActivity"
         android:text="Accelerometer"
+        android:textColor="#FFFFFFFF"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.085"
+        app:layout_constraintHorizontal_bias="0.108"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.417" />
+        app:layout_constraintVertical_bias="0.456" />
 
     <Button
         android:id="@+id/oldTestButton"
-        android:layout_width="154dp"
-        android:layout_height="46dp"
+        android:layout_width="158dp"
+        android:layout_height="48dp"
         android:background="#95CCF0"
         android:onClick="openOldTestsActivity"
         android:text="Old Tests"
+        android:textColor="#FFFFFFFF"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.929"
+        app:layout_constraintHorizontal_bias="0.91"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.417" />
+        app:layout_constraintVertical_bias="0.455" />
 
     <Button
         android:id="@+id/logoutButton"
-        android:layout_width="114dp"
-        android:layout_height="41dp"
+        android:layout_width="136dp"
+        android:layout_height="56dp"
         android:background="#95CCF0"
         android:onClick="openMainActivity"
         android:text="Logout"
-        android:textSize="18sp"
+        android:textColor="#FFFFFFFF"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.757" />
+        app:layout_constraintVertical_bias="0.783" />
 
     <TextView
         android:id="@+id/titleTextView"
@@ -103,27 +110,29 @@
         android:text="Main Menu"
         android:textColor="#22B419"
         android:textSize="55sp"
+        android:textStyle="bold"
         app:fontFamily="sans-serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.132" />
+        app:layout_constraintVertical_bias="0.101" />
 
     <Button
         android:id="@+id/cameraButton"
-        android:layout_width="111dp"
-        android:layout_height="54dp"
+        android:layout_width="132dp"
+        android:layout_height="71dp"
         android:background="#95CCF0"
         android:onClick="openCameraActivity"
         android:text="New Test"
-        android:textSize="18sp"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.265" />
+        app:layout_constraintVertical_bias="0.285" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

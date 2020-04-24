@@ -37,7 +37,8 @@
             android:id="@+id/status"
             style="@style/ThemeOverlay.MyTextDetail"
             android:text="@string/signed_out"
-            android:visibility="gone"/>
+            android:textColor="#000000"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/detail"
@@ -47,12 +48,14 @@
 
         <Button
             android:id="@+id/aboutButton"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
             android:background="#95CCF0"
             android:onClick="openAboutUsActivity"
             android:text="@string/about_us"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:theme="@style/ThemeOverlay.MyDarkButton"/>
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:theme="@style/ThemeOverlay.MyDarkButton" />
 
         <Space
             android:layout_width="0dp"
@@ -62,12 +65,14 @@
 
         <Button
             android:id="@+id/forgotPwdButton"
-            android:layout_width="wrap_content"
+            android:layout_width="206dp"
             android:layout_height="wrap_content"
             android:background="#95CCF0"
             android:onClick="openForgotPasswordActivity"
             android:text="@string/forgot_password"
-            android:theme="@style/ThemeOverlay.MyDarkButton"/>
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:theme="@style/ThemeOverlay.MyDarkButton" />
 
         <Space
             android:layout_width="0dp"
@@ -77,12 +82,14 @@
 
         <Button
             android:id="@+id/openMainMenuButton"
-            android:layout_width="wrap_content"
+            android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:background="#95CCF0"
             android:onClick="openMainMenuActivity"
             android:text="@string/go_to_main_menu"
-            android:theme="@style/ThemeOverlay.MyDarkButton"/>
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:theme="@style/ThemeOverlay.MyDarkButton" />
 
         <Space
             android:layout_width="0dp"
@@ -96,7 +103,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/grey_300"
+        android:background="#1F71A1"
         android:gravity="center_vertical">
 
         <LinearLayout
@@ -113,7 +120,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="@string/hint_email"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#CDCCCC" />
 
             <EditText
                 android:id="@+id/passwordEditText"
@@ -121,7 +130,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="@string/hint_password"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#CDCCCC" />
 
         </LinearLayout>
 
@@ -136,24 +147,28 @@
 
             <Button
                 android:id="@+id/loginButton"
-                android:background="#95CCF0"
-                android:layout_marginStart="@dimen/button_horizontal_margin"
-                android:layout_marginEnd="@dimen/button_horizontal_margin"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/button_horizontal_margin"
+                android:layout_marginEnd="@dimen/button_horizontal_margin"
                 android:layout_weight="1"
+                android:background="#95CCF0"
                 android:text="@string/sign_in"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
 
             <Button
                 android:id="@+id/createAccButton"
-                android:background="#95CCF0"
-                android:layout_marginStart="@dimen/button_horizontal_margin"
-                android:layout_marginEnd="@dimen/button_horizontal_margin"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/button_horizontal_margin"
+                android:layout_marginEnd="@dimen/button_horizontal_margin"
                 android:layout_weight="1"
+                android:background="#95CCF0"
                 android:text="@string/create_account"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
         </LinearLayout>
 
@@ -169,33 +184,39 @@
 
             <Button
                 android:id="@+id/signOutButton"
-                android:layout_marginStart="@dimen/button_horizontal_margin"
-                android:layout_marginEnd="@dimen/button_horizontal_margin"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/button_horizontal_margin"
+                android:layout_marginEnd="@dimen/button_horizontal_margin"
                 android:layout_weight="1"
+                android:background="#95CCF0"
                 android:text="@string/sign_out"
+                android:textColor="#FFFFFF"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
 
             <Button
                 android:id="@+id/verifyEmailButton"
-                android:layout_marginStart="@dimen/button_horizontal_margin"
-                android:layout_marginEnd="@dimen/button_horizontal_margin"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/button_horizontal_margin"
+                android:layout_marginEnd="@dimen/button_horizontal_margin"
                 android:layout_weight="1"
+                android:background="#95CCF0"
                 android:text="@string/verify_email"
+                android:textColor="#FFFFFF"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
 
             <Button
                 android:id="@+id/reloadButton"
                 style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_marginStart="@dimen/button_horizontal_margin"
-                android:layout_marginEnd="@dimen/button_horizontal_margin"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/button_horizontal_margin"
+                android:layout_marginEnd="@dimen/button_horizontal_margin"
                 android:layout_weight="1"
+                android:background="#95CCF0"
                 android:text="@string/reload"
+                android:textColor="#FFFFFF"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
         </LinearLayout>
     </RelativeLayout>

@@ -271,11 +271,11 @@ public class CameraActivity extends AppCompatActivity {
         new CountDownTimer(60000, 1000) {
 
             public void onTick(long millisUntilFinished) {
-                timerTextView.setText("timer: " + millisUntilFinished / 1000);
+                timerTextView.setText("Time Remaining: " + millisUntilFinished / 1000);
             }
 
             public void onFinish() {
-                timerTextView.setText("timer: done!");
+                timerTextView.setText("Scan Complete!");
             }
         }.start();
     }

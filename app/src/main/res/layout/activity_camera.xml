@@ -19,11 +19,11 @@
             android:layout_width="150dp"
             android:layout_height="367dp"
             android:layout_gravity="left"
-            android:background="@color/colorPrimary"
-            android:foreground="@color/colorPrimary"
-            android:gravity="center_horizontal"
-            android:text="Align the test strip so that it fits within the camera window."
-            android:textColor="#FFFFFF"
+            android:background="#C3E1EC"
+            android:gravity="center_horizontal|center_vertical"
+            android:text='Please align dipstick within camera frame and click "Scan Dipstick".'
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"
             android:visibility="visible" />
 
         <TextView
@@ -31,8 +31,11 @@
             android:layout_width="150dp"
             android:layout_height="367dp"
             android:layout_gravity="right"
-            android:background="@color/colorPrimary"
-            android:foreground="@color/colorPrimary"
+            android:background="#C3E1EC"
+            android:gravity="center_horizontal|center_vertical"
+            android:text='Hold camera in place until timer completes. Then click "Analyze Images".'
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"
             android:visibility="visible" />
 
     </FrameLayout>
@@ -41,69 +44,92 @@
         android:id="@+id/captureButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
         android:onClick="takePicture"
-        android:text="Capture IMAGE" />
+        android:text="Scan Dipstick"
+        android:textColor="#FFFFFFFF"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/analyzeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
         android:onClick="openGraphActivity"
-        android:text="Analyze" />
+        android:text="Analyze Images"
+        android:textColor="#FFFFFFFF"
+        android:textSize="18sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="132dp"
+        android:background="#C3E1EC"
         android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/instructionsTextView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:background="#C3E1EC"
+            android:onClick="openGraphActivity"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp" />
 
         <ImageView
             android:id="@+id/photoImageView"
             android:layout_width="100dp"
-            android:layout_height="match_parent"
+            android:layout_height="137dp"
+            android:background="#C3E1EC"
             app:srcCompat="@android:drawable/btn_star_big_on" />
 
         <ImageView
             android:id="@+id/photoImageView2"
             android:layout_width="100dp"
-            android:layout_height="match_parent"
-            app:srcCompat="@android:drawable/btn_star_big_on"/>
+            android:layout_height="137dp"
+            android:background="#C3E1EC"
+            app:srcCompat="@android:drawable/btn_star_big_on" />
 
         <ImageView
             android:id="@+id/photoImageView3"
             android:layout_width="100dp"
-            android:layout_height="match_parent"
-            app:srcCompat="@android:drawable/btn_star_big_on"/>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/notifyTextView"
-                android:layout_width="150dp"
-                android:layout_height="330dp"
-                android:layout_weight="1"
-                android:background="#C3E1EC"
-                android:text="no images taken" />
-
-            <TextView
-                android:id="@+id/timerTextView"
-                android:layout_width="150dp"
-                android:layout_height="320dp"
-                android:layout_weight="1"
-                android:background="#C3E1EC"
-                android:text="timer:" />
-
-            <TextView
-                android:id="@+id/instructionsTextView"
-                android:background="#C3E1EC"
-                android:layout_width="150dp"
-                android:layout_height="300dp"
-                android:text="Align test strip within camera frame."
-                android:layout_gravity="center"/>
-        </LinearLayout>
+            android:layout_height="137dp"
+            android:background="#C3E1EC"
+            app:srcCompat="@android:drawable/btn_star_big_on" />
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:background="#C3E1EC">
+
+        <TextView
+            android:id="@+id/notifyTextView"
+            android:layout_width="450dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:background="#C3E1EC"
+            android:text="No Images Taken"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/timerTextView"
+            android:layout_width="450dp"
+            android:layout_height="135dp"
+            android:layout_weight="1"
+            android:background="#C3E1EC"
+            android:text="Time Remaining:"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/fillerText"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:background="#C3E1EC" />
 
 </LinearLayout>

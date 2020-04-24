@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="To"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/colorPrimaryDark" />
 
     <EditText
         android:id="@+id/edit_text_to"
@@ -25,7 +26,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Subject:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/colorPrimaryDark" />
 
     <EditText
         android:id="@+id/edit_text_subject"
@@ -37,7 +39,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Message:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/colorPrimaryDark" />
 
     <EditText
         android:id="@+id/edit_text_message"
@@ -51,6 +54,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#79BDE6"
-        android:text="Send" />
+        android:text="Send"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
 
 </LinearLayout>
