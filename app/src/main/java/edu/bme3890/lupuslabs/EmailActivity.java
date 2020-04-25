@@ -2,8 +2,6 @@ package edu.bme3890.lupuslabs;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -13,8 +11,6 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
-
-import java.io.FileInputStream;
 
 public class EmailActivity extends AppCompatActivity {
     private EditText mEditTextTo;
@@ -33,16 +29,6 @@ public class EmailActivity extends AppCompatActivity {
 
         String emailAddress = mAuth.getCurrentUser().getEmail();
 
-        Bitmap barBitmap = null;
-        String filename = getIntent().getStringExtra("barGraph");
-        try {
-            FileInputStream is = this.openFileInput(filename);
-            barBitmap = BitmapFactory.decodeStream(is);
-            is.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
         mEditTextTo = findViewById(R.id.edit_text_to);
         mEditTextTo.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         mEditTextSubject = findViewById(R.id.edit_text_subject);
@@ -59,13 +45,15 @@ public class EmailActivity extends AppCompatActivity {
         Intent dataIntent = getIntent();
         String sensor_data = dataIntent.getStringExtra(NewTestActivity.EXTRA_SENSOR_DATA);
         String startActivity = dataIntent.getStringExtra(Activity.ACTIVITY_SERVICE);
+        String results = dataIntent.getStringExtra("results");
         String newTestActivity = NewTestActivity.class.getSimpleName();
         String graphActivity = GraphActivity.class.getSimpleName();
 
         if (startActivity.equalsIgnoreCase(newTestActivity)) {
             mEditTextMessage.setText("Team name: Lupus Labs\n\nLinear acceleration:\n" + sensor_data);
         } else if (startActivity.equalsIgnoreCase(graphActivity)) {
-            mEditTextMessage.setText("The test results for " + emailAddress + "are attached.");
+            mEditTextTo.setText(emailAddress);
+            mEditTextMessage.setText("Results for " + emailAddress + ":\n" + results);
 
         }
     }

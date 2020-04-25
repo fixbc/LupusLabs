@@ -26,8 +26,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -49,6 +47,9 @@ public class CameraActivity extends AppCompatActivity {
     TextView timerTextView;
     TextView instructionsTextView;
     int photoNumber;
+    File PictureFile1;
+    File PictureFile2;
+    File PictureFile3;
 
     //variables to manage permissions
     private Activity thisActivity;
@@ -56,7 +57,9 @@ public class CameraActivity extends AppCompatActivity {
 
     public void openGraphActivity(View v) {
         Intent intent = new Intent(this, GraphActivity.class);
-        intent.putExtra("imageName", getOutputMediaFile(MEDIA_TYPE_IMAGE).getName());
+        intent.putExtra("image1", PictureFile1.getName());
+        intent.putExtra("image2", PictureFile2.getName());
+        intent.putExtra("image3", PictureFile3.getName());
         startActivity(intent);
     }
     @Override
@@ -212,6 +215,7 @@ public class CameraActivity extends AppCompatActivity {
 
             }
             if (pictureFile.getName().equalsIgnoreCase("image1.jpg")){
+                PictureFile1 = pictureFile;
                 lastPhotoImageView.setImageURI(Uri.fromFile(pictureFile));
                 instructionsTextView.setVisibility(View.GONE);
                 notifyTextView.setVisibility(View.VISIBLE);
@@ -219,6 +223,7 @@ public class CameraActivity extends AppCompatActivity {
                 notifyTextView.setText("Last picture taken: ");
                 notifyTextView.append(pictureFile.getName());
             } else if (pictureFile.getName().equalsIgnoreCase("image2.jpg")) {
+                PictureFile2 = pictureFile;
                 lastPhotoImageView2.setVisibility(View.VISIBLE);
                 lastPhotoImageView2.setImageURI(Uri.fromFile(pictureFile));
                 instructionsTextView.setVisibility(View.GONE);
@@ -227,6 +232,7 @@ public class CameraActivity extends AppCompatActivity {
                 notifyTextView.setText("Last picture taken: ");
                 notifyTextView.append(pictureFile.getName());
             } else if (pictureFile.getName().equalsIgnoreCase("image3.jpg")) {
+                PictureFile3 = pictureFile;
                 lastPhotoImageView3.setVisibility(View.VISIBLE);
                 lastPhotoImageView3.setImageURI(Uri.fromFile(pictureFile));
                 instructionsTextView.setVisibility(View.GONE);
@@ -308,9 +314,8 @@ public class CameraActivity extends AppCompatActivity {
         }
 
         // Create a media file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         File mediaFile;
-        if (type == MEDIA_TYPE_IMAGE){
+        if (type == MEDIA_TYPE_IMAGE) {
             mediaFile = new File(mediaStorageDir.getPath() + File.separator +
                     "image" + photoNumber + ".jpg");
         } else {

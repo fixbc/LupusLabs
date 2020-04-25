@@ -1,7 +1,6 @@
 package edu.bme3890.lupuslabs;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -24,20 +23,21 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class GraphActivity extends AppCompatActivity {
     //view-related variables
-    ImageView imageView, cropImageView, cropImageView2;
+    ImageView imageView, cropImageView, cropImageView2, cropImageView3;
 
     public static final int MEDIA_TYPE_IMAGE = 1;
     public static final int MEDIA_TYPE_VIDEO = 2;
 
     //file-related variables
-    Bitmap imageBitmap;
-    File imageFile;
+    Bitmap imageBitmap1;
+    File imageFile1;
+    File imageFile2;
+    File imageFile3;
 
     //graph-related variables
     GraphView graph;
@@ -79,11 +79,14 @@ public class GraphActivity extends AppCompatActivity {
         setContentView(R.layout.activity_graph);
 
         Intent nameIntent = getIntent();
-        String FILENAME = nameIntent.getStringExtra("imageName");
+        String FILENAME1 = nameIntent.getStringExtra("image1");
+        String FILENAME2 = nameIntent.getStringExtra("image2");
+        String FILENAME3 = nameIntent.getStringExtra("image3");
 
         imageView = findViewById(R.id.imageView);
         cropImageView = findViewById(R.id.cropAreaImageView);
         cropImageView2 = findViewById(R.id.cropAreaImageView2);
+        cropImageView3 = findViewById(R.id.cropAreaImageView3);
         TextView imageSize = findViewById(R.id.imageSizeTV);
 
         //Button lineSeriesBtn = findViewById(R.id.lineSeriesButton);
@@ -93,13 +96,19 @@ public class GraphActivity extends AppCompatActivity {
         //assume image already exists in device
         //load image file and create bitmap
         File mediaStorageDir = new File(getFilesDir(),"TCAImages");
-        imageFile = new File(mediaStorageDir, FILENAME);
-        imageView.setImageURI(Uri.fromFile(imageFile));
-        imageBitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
+        imageFile1 = new File(mediaStorageDir, FILENAME1);
+        imageView.setImageURI(Uri.fromFile(imageFile1));
+        imageBitmap1 = BitmapFactory.decodeFile(imageFile1.getAbsolutePath());
+
+        imageFile2 = new File(mediaStorageDir, FILENAME2);
+        cropImageView2.setImageURI(Uri.fromFile(imageFile2));
+
+        imageFile3 = new File(mediaStorageDir, FILENAME3);
+        cropImageView3.setImageURI(Uri.fromFile(imageFile3));
 
         //indicate size of image
-        imageSize.setText(imageBitmap.getWidth() + " x " +
-                imageBitmap.getHeight());
+        imageSize.setText(imageBitmap1.getWidth() + " x " +
+                imageBitmap1.getHeight());
 
         negativeImageView = findViewById(R.id.negativeImageView);
         mgdL15ImageView = findViewById(R.id.mgdL15ImageView);
@@ -161,7 +170,7 @@ public class GraphActivity extends AppCompatActivity {
         y2 = 1350;
 
         //show region of interest in crop window
-        Bitmap croppedImageBitmap = Bitmap.createBitmap(imageBitmap,x1, y1, x2-x1, y2-y1);
+        Bitmap croppedImageBitmap = Bitmap.createBitmap(imageBitmap1,x1, y1, x2-x1, y2-y1);
         cropImageView.setImageBitmap(croppedImageBitmap);
 
         // define region of interest for albumin pad
@@ -169,7 +178,7 @@ public class GraphActivity extends AppCompatActivity {
         x2_2 = 1190;
         y1_2 = 1150;
         y2_2 = 1350;
-        Bitmap croppedImageBitmap2 = Bitmap.createBitmap(imageBitmap,x1_2, y1_2, x2_2-x1_2, y2_2-y1_2);
+        Bitmap croppedImageBitmap2 = Bitmap.createBitmap(imageBitmap1,x1_2, y1_2, x2_2-x1_2, y2_2-y1_2);
         cropImageView2.setImageBitmap(croppedImageBitmap2);
 
         return croppedImageBitmap2;
@@ -373,27 +382,15 @@ public class GraphActivity extends AppCompatActivity {
 
     public void openEmailActivity(View v) {
         Intent intent = new Intent(this, EmailActivity.class);
+        String timeStamp = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z").format(new Date());
+
+        intent.putExtra("results", "Your results from " + timeStamp + " are below.\n" + resultTextView.getText().toString());
         intent.putExtra(Activity.ACTIVITY_SERVICE, this.getClass().getSimpleName());
-        try {
-            //Write file
-            String filename = "bitmap.png";
-            FileOutputStream stream = this.openFileOutput(filename, Context.MODE_PRIVATE);
-            barBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-
-            //Cleanup
-            stream.close();
-            barBitmap.recycle();
-
-            intent.putExtra("barGraph", filename);
-            startActivity(intent);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        startActivity(intent);
     }
 
     public void openOldTestsActivity(View v) {
         Intent intent = new Intent(this, OldTestsActivity.class);
-        intent.putExtra("barBitmap", getOutputMediaFile(MEDIA_TYPE_IMAGE).getName());
         startActivity(intent);
     }
 

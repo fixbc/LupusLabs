@@ -145,6 +145,12 @@
             android:layout_height="56dp"
             app:srcCompat="@android:drawable/btn_star_big_off" />
 
+        <ImageView
+            android:id="@+id/cropAreaImageView3"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            app:srcCompat="@android:drawable/btn_star_big_off" />
+
         <Button
             android:id="@+id/runTestButton"
             android:layout_width="match_parent"
@@ -161,8 +167,8 @@
         android:layout_width="134dp"
         android:layout_height="57dp"
         android:background="#95CCF0"
-        android:onClick="openOldTestsActivity"
-        android:text="Save Graph"
+        android:onClick="openEmailActivity"
+        android:text="Send Results"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
