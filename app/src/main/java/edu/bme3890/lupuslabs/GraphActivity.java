@@ -163,6 +163,7 @@ public class GraphActivity extends AppCompatActivity {
                 imageView6.setVisibility(View.GONE);
                 barGraphBtn.setVisibility(View.GONE);
                 runLineSeries(sampleRGBVector1, sampleRGBVector2, sampleRGBVector3);
+
                 break;
             //case R.id.lineSeriesButton:
                 //do something

@@ -57,7 +57,7 @@
 
     <Button
         android:id="@+id/newTestButton"
-        android:layout_width="164dp"
+        android:layout_width="150dp"
         android:layout_height="50dp"
         android:background="#95CCF0"
         android:onClick="openNewTestActivity"
@@ -73,7 +73,7 @@
 
     <Button
         android:id="@+id/oldTestButton"
-        android:layout_width="158dp"
+        android:layout_width="150dp"
         android:layout_height="48dp"
         android:background="#95CCF0"
         android:onClick="openOldTestsActivity"
