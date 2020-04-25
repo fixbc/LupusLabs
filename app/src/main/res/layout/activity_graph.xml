@@ -16,7 +16,7 @@
         app:layout_constraintHorizontal_bias="0.761"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.745"
+        app:layout_constraintVertical_bias="0.818"
         app:srcCompat="@drawable/protein2000" />
 
     <ImageView
@@ -28,7 +28,7 @@
         app:layout_constraintHorizontal_bias="0.761"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.745"
+        app:layout_constraintVertical_bias="0.819"
         app:srcCompat="@drawable/protein300" />
 
     <ImageView
@@ -40,7 +40,7 @@
         app:layout_constraintHorizontal_bias="0.761"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.745"
+        app:layout_constraintVertical_bias="0.818"
         app:srcCompat="@drawable/protein100" />
 
     <ImageView
@@ -52,7 +52,7 @@
         app:layout_constraintHorizontal_bias="0.761"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.745"
+        app:layout_constraintVertical_bias="0.819"
         app:srcCompat="@drawable/protein30" />
 
     <ImageView
@@ -64,7 +64,7 @@
         app:layout_constraintHorizontal_bias="0.761"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.745"
+        app:layout_constraintVertical_bias="0.818"
         app:srcCompat="@drawable/proteinnegative" />
 
     <com.jjoe64.graphview.GraphView
@@ -86,17 +86,37 @@
         android:contentDescription="@string/todo"
         android:cropToPadding="false"
         android:scaleType="centerInside"
-        app:layout_constraintBottom_toTopOf="@+id/graph"
+        app:layout_constraintBottom_toTopOf="@+id/imageView5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.179"
         app:srcCompat="@android:drawable/btn_star_big_on" />
 
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="198dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        android:scaleType="centerInside"
+        app:srcCompat="@android:drawable/btn_star_big_on"/>
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="198dp"
+        android:layout_height="0dp"
+        app:srcCompat="@android:drawable/btn_star_big_on"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toTopOf="@+id/graph"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"/>
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
-        android:layout_height="307dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
@@ -145,11 +165,25 @@
             android:layout_height="56dp"
             app:srcCompat="@android:drawable/btn_star_big_off" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="5dp"/>
+
         <ImageView
             android:id="@+id/cropAreaImageView3"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             app:srcCompat="@android:drawable/btn_star_big_off" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="5dp"/>
+
+        <ImageView
+            android:id="@+id/cropAreaImageView4"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            app:srcCompat="@android:drawable/btn_star_big_off"/>
 
         <Button
             android:id="@+id/runTestButton"
@@ -176,7 +210,7 @@
         app:layout_constraintHorizontal_bias="0.877"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.885" />
+        app:layout_constraintVertical_bias="0.937" />
 
     <ImageView
         android:id="@+id/mgdL15ImageView"
@@ -187,7 +221,7 @@
         app:layout_constraintHorizontal_bias="0.761"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.745"
+        app:layout_constraintVertical_bias="0.818"
         app:srcCompat="@drawable/protein15" />
 
     <TextView
@@ -198,9 +232,9 @@
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.772"
+        app:layout_constraintHorizontal_bias="0.903"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.632" />
+        app:layout_constraintVertical_bias="0.713" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,22 +28,21 @@ import java.util.Date;
 
 public class GraphActivity extends AppCompatActivity {
     //view-related variables
-    ImageView imageView, cropImageView, cropImageView2, cropImageView3;
+    ImageView imageView, cropImageView, cropImageView2, cropImageView3, cropImageView4, imageView5, imageView6;
 
     public static final int MEDIA_TYPE_IMAGE = 1;
     public static final int MEDIA_TYPE_VIDEO = 2;
 
     //file-related variables
     Bitmap imageBitmap1;
+    Bitmap imageBitmap2;
+    Bitmap imageBitmap3;
     File imageFile1;
     File imageFile2;
     File imageFile3;
 
     //graph-related variables
     GraphView graph;
-
-    Bitmap lineBitmap;
-    Bitmap barBitmap;
 
     ImageView negativeImageView;
     Bitmap negativeBitmap;
@@ -69,9 +68,12 @@ public class GraphActivity extends AppCompatActivity {
     Bitmap mgdL2000Bitmap;
     double[] mgdL2000RGBVector = new double[3];
 
-    double[] sampleRGBVector = new double[3];
+    double[] sampleRGBVector1 = new double[3];
+    double[] sampleRGBVector2 = new double[3];
+    double[] sampleRGBVector3 = new double[3];
 
     TextView resultTextView;
+    Button barGraphBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,13 +86,16 @@ public class GraphActivity extends AppCompatActivity {
         String FILENAME3 = nameIntent.getStringExtra("image3");
 
         imageView = findViewById(R.id.imageView);
+        imageView5 = findViewById(R.id.imageView5);
+        imageView6 = findViewById(R.id.imageView6);
         cropImageView = findViewById(R.id.cropAreaImageView);
         cropImageView2 = findViewById(R.id.cropAreaImageView2);
         cropImageView3 = findViewById(R.id.cropAreaImageView3);
+        cropImageView4 = findViewById(R.id.cropAreaImageView4);
         TextView imageSize = findViewById(R.id.imageSizeTV);
 
         //Button lineSeriesBtn = findViewById(R.id.lineSeriesButton);
-        Button barGraphBtn = findViewById(R.id.runTestButton);
+        barGraphBtn = findViewById(R.id.runTestButton);
         graph = findViewById(R.id.graph);
 
         //assume image already exists in device
@@ -101,10 +106,12 @@ public class GraphActivity extends AppCompatActivity {
         imageBitmap1 = BitmapFactory.decodeFile(imageFile1.getAbsolutePath());
 
         imageFile2 = new File(mediaStorageDir, FILENAME2);
-        cropImageView2.setImageURI(Uri.fromFile(imageFile2));
+        imageView5.setImageURI(Uri.fromFile(imageFile2));
+        imageBitmap2 = BitmapFactory.decodeFile(imageFile2.getAbsolutePath());
 
         imageFile3 = new File(mediaStorageDir, FILENAME3);
-        cropImageView3.setImageURI(Uri.fromFile(imageFile3));
+        imageView6.setImageURI(Uri.fromFile(imageFile3));
+        imageBitmap3 = BitmapFactory.decodeFile(imageFile3.getAbsolutePath());
 
         //indicate size of image
         imageSize.setText(imageBitmap1.getWidth() + " x " +
@@ -147,9 +154,15 @@ public class GraphActivity extends AppCompatActivity {
         switch (v.getId()){
             case R.id.runTestButton://barButton Graph
                 //do something
-                sampleRGBVector = getavgRGBVector(extractCropArea());
-                compareRGBVectors(sampleRGBVector);
+                sampleRGBVector1 = getavgRGBVector(extractCropArea(imageBitmap1));
+                sampleRGBVector2 = getavgRGBVector(extractCropArea(imageBitmap2));
+                sampleRGBVector3 = getavgRGBVector(extractCropArea(imageBitmap3));
+                compareRGBVectors(sampleRGBVector3);
                 imageView.setVisibility(View.GONE);
+                imageView5.setVisibility(View.GONE);
+                imageView6.setVisibility(View.GONE);
+                barGraphBtn.setVisibility(View.GONE);
+                runLineSeries(sampleRGBVector1, sampleRGBVector2, sampleRGBVector3);
                 break;
             //case R.id.lineSeriesButton:
                 //do something
@@ -162,7 +175,7 @@ public class GraphActivity extends AppCompatActivity {
         }
     }
 
-    public Bitmap extractCropArea(){
+    public Bitmap extractCropArea(Bitmap imageBitmap){
         int x1, y1, x2, y2, x1_2, x2_2, y1_2, y2_2;
         x1 = 0;
         x2 = 3264;
@@ -170,8 +183,8 @@ public class GraphActivity extends AppCompatActivity {
         y2 = 1350;
 
         //show region of interest in crop window
-        Bitmap croppedImageBitmap = Bitmap.createBitmap(imageBitmap1,x1, y1, x2-x1, y2-y1);
-        cropImageView.setImageBitmap(croppedImageBitmap);
+        Bitmap croppedImageBitmap1 = Bitmap.createBitmap(imageBitmap1,x1, y1, x2-x1, y2-y1);
+        cropImageView.setImageBitmap(croppedImageBitmap1);
 
         // define region of interest for albumin pad
         x1_2 = 990;
@@ -180,6 +193,14 @@ public class GraphActivity extends AppCompatActivity {
         y2_2 = 1350;
         Bitmap croppedImageBitmap2 = Bitmap.createBitmap(imageBitmap1,x1_2, y1_2, x2_2-x1_2, y2_2-y1_2);
         cropImageView2.setImageBitmap(croppedImageBitmap2);
+
+        Bitmap croppedImageBitmap3 = Bitmap.createBitmap(imageBitmap2,x1_2, y1_2, x2_2-x1_2, y2_2-y1_2);
+        cropImageView3.setImageBitmap(croppedImageBitmap3);
+
+        Bitmap croppedImageBitmap4 = Bitmap.createBitmap(imageBitmap3,x1_2, y1_2, x2_2-x1_2, y2_2-y1_2);
+        cropImageView4.setImageBitmap(croppedImageBitmap4);
+
+        croppedImageBitmap2 = Bitmap.createBitmap(imageBitmap,x1_2, y1_2, x2_2-x1_2, y2_2-y1_2);
 
         return croppedImageBitmap2;
     }
@@ -285,23 +306,23 @@ public class GraphActivity extends AppCompatActivity {
 
     }
 
-    public Bitmap runLineSeries (Bitmap croppedIB){
+    public void runLineSeries (double[] RGBVector1, double[] RGBVector2, double[] RGBVector3) {
         //for each pixel in the image, extract the red, green and blue values
-        int i = 0, h = croppedIB.getHeight(), w = croppedIB.getWidth();
-        int numPixels = h * w;
 
-        DataPoint[] redPixels = new DataPoint[numPixels], greenPixels = new DataPoint[numPixels],
-                bluePixels = new DataPoint[numPixels];
+        DataPoint[] redPixels = new DataPoint[3], greenPixels = new DataPoint[3],
+                bluePixels = new DataPoint[3];
 
-        //extract color values into appropriate datapoint arrays
-        for (int x = 0; x < w; x++){
-            for (int y = 0; y < h; y++){
-                int pixel = croppedIB.getPixel(x,y);
-                redPixels[i] = new DataPoint(i,Color.red(pixel));
-                greenPixels[i] = new DataPoint(i,Color.green(pixel));
-                bluePixels[i++] = new DataPoint(i,Color.blue(pixel));
-            }
-        }
+        redPixels[0] = new DataPoint(0, RGBVector1[0]);
+        redPixels[1] = new DataPoint(1, RGBVector2[0]);
+        redPixels[2] = new DataPoint(2, RGBVector3[0]);
+
+        greenPixels[0] = new DataPoint(0, RGBVector1[1]);
+        greenPixels[1] = new DataPoint(1, RGBVector2[1]);
+        greenPixels[2] = new DataPoint(2, RGBVector3[1]);
+
+        bluePixels[0] = new DataPoint(0, RGBVector1[2]);
+        bluePixels[1] = new DataPoint(1, RGBVector2[2]);
+        bluePixels[2] = new DataPoint(2, RGBVector3[2]);
 
         //create line series for each color
         LineGraphSeries<DataPoint> redSeries = new LineGraphSeries<>(redPixels);
@@ -320,10 +341,10 @@ public class GraphActivity extends AppCompatActivity {
         blueSeries.setColor(Color.BLUE);
         blueSeries.setThickness(1);
 
-        // get the bitmap
-        Bitmap lineBitmap = graph.takeSnapshot();
+        StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph);
+        staticLabelsFormatter.setHorizontalLabels(new String[] {"0 sec", "30 sec", "60 sec"});
+        graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
 
-        return lineBitmap;
     }
 
     public Bitmap runBarSeries (Bitmap croppedIB){
